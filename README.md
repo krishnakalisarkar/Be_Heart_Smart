@@ -21,7 +21,7 @@ Passoniate about educating people on vaccine efficacy
 
 Description source of data:
 Texas department of Health COVID-19 data collected over time.
-  
+
 Questions to answer with the data:
 1. Relationship between Vaccinations and Hospitilations - As vaccinations increase in counties do hospitilizations decrease?
 2. Relationship between Vaccinations and Daily Cases - As cases and hospitliations increase, is vaccination effective? 
