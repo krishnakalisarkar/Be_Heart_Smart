@@ -63,4 +63,30 @@ The effects of behavioral risk factors may show up in individuals as
 * obesity. 
 
 A healthy heart is central to overall good health. The purpose of this project is to spread awareness among individuals that embracing a healthy lifestyle at any age can prevent heart disease and lower the  risks for  heart attack or stroke.
- 
+
+# Initial Exploratory Data Analysis:
+
+## Data Cleaning:
+
+### Checking for outliers:
+* To check for outliers in the features like systole, diastole, height and weight, four box plots were created and from the box plots the outliers are calculated.
+
+### Removing the outlier rows:
+* Based on the outlier values, the entire dataset is cleaned and the rows with outlier data is dropped in features like systole, diastole, height and weight.
+* The dataset is reduced from 70,000 rows to 60,532 rows.
+
+## EDA bar graphs in matplotlib:
+### Effect of high cholesterol on developing Cardiac disease:
+* A groupby on cardio and cholesterol and performing a mean shows that cholesterol levels more than 240 had a higher chance of developing heart disease.
+* Normal cholesterol level has a lesser chance of developing heart disease.
+
+### Effect of high glucose on developing Cardiac disease:
+* A groupby on cardio and glucose and performing a mean shows that high glucose levels had a higher chance of developing heart disease.
+* Normal glucose level has a lesser chance of developing heart disease.
+
+### Effect of gender on developing Cardiac disease:
+* From this dataset, both male and female are at equal risk of developing heart disease.
+
+### Effect of alcohol consumption on developing Cardiac disease:
+* From this dataset, it is evident that alcohol consumption alone with no other underlying condition has no effect on developing heart disease.
+* It is yet to be explored if alcohol consumption along with other underlying medical condition has an effect on developing heart disease.
