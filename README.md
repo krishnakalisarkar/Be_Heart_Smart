@@ -12,7 +12,7 @@ The purpose of this project is to predict the risk of cardiovascular disease bas
 
 ## Observations on dataset
 The data had values separated by semicolons. It was converted into a csv using Microsoft Excel. Initial observations were made in Microdoft excel\
-The following are the ranges of each continous feature of the dataset, and the values for each categorical features of the original dataset
+The following are the ranges of each continuous feature of the dataset, and the values for each categorical features of the original dataset
 - Age range:  29 to 65 years.
 - Gender : Categorical binary(1-female, 2-male)
 - Height: 55 - 250 (cm)
@@ -26,15 +26,15 @@ The following are the ranges of each continous feature of the dataset, and the v
 - Physical activity : Categorical binary (1-yes, 0-no)
 - Cardio Y/N : Categorical binary (1-yes, 0-no)(Target)
 
-Notice that on some continous variables have values that out of range or does not mean anything.\
-This may have occured due to different reasons. Human error when entering the values in dataset, mistake in changing , possibility of values being read from a machine into the dataset, misplacement of decimal points etc.\
+Notice that some continuous variables have values that out of range or are improbable.\
+This may have occured due to different reasons like human error when entering the values in dataset, ommitting changing units between kilograms and pounds, possibility of values being read from a machine into the dataset, misplacement of decimal points etc.
 
-## Plan for data processing.
+## Plan for data processing
 As number of observations are 70K, PySpark will be used for initial data processing, and EDA.\
-At each point desicions have to be made on how to treat the datapoint, is it worth keeping it and why, or can it be removed from the final working dataset.\
-The first step towards clean up will be putting the continous variables within its probable ranges (including extreme values that it may take). Numbers that are improbable for adult humans, for eg. a systolic value of 16020, will be removed. It is possible that the original value may have been 160.20, however as there is no way to confirm that, and because the total numbers of datapoints were so high, the decision was taken to remove rows with such high values.
+Desicions have to be made on how to treat each datapoint that is out of range of expected values, depending on whether it is worth retaining in the dataset and why, or can it be removed from the final working dataset.\
+The first step towards data clean up will be putting the continuous variables within its probable ranges (including extreme values that it may take). Numbers that are improbable for adult humans, for eg. a systolic value of 16020, will be removed. It is possible that the original value may have been 160.20, however as there is no way to confirm that, and because the total numbers of datapoints were so high, the decision was taken to remove rows with such high values.
 
-Continuous variables will have to following values that are probable for adult humans.
+Continuous variables will retain the following values.
 - Height: 135 cm to 215 cm  
 - Weight: 40 kg to 200 kg 
 - Systolic bp: 90 to 230. The negative numbers (-150, -140, -120, -115, -100) were also kept. Their sign would be changed.
