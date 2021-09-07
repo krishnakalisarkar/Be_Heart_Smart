@@ -28,6 +28,9 @@ The following are the ranges of each continous feature of the dataset, and the v
 
 Notice that on some continous variables have values that out of range or does not mean anything.\
 This may have occured due to different reasons. Human error when entering the values in dataset, mistake in changing , possibility of values being read from a machine into the dataset, misplacement of decimal points etc.\
+
+## Plan for data processing.
+As number of observations are 70K, PySpark will be used for initial data processing, and EDA.\
 At each point desicions have to be made on how to treat the datapoint, is it worth keeping it and why, or can it be removed from the final working dataset.\
 The first step towards clean up will be putting the continous variables within its probable ranges (including extreme values that it may take). Numbers that are improbable for adult humans, for eg. a systolic value of 16020, will be removed. It is possible that the original value may have been 160.20, however as there is no way to confirm that, and because the total numbers of datapoints were so high, the decision was taken to remove rows with such high values.
 
