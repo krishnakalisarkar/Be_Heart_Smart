@@ -36,9 +36,14 @@ The first step towards data clean up will be putting the continuous variables wi
 
 Continuous variables will retain the following values.
 - Height: 135 cm to 215 cm  
-- Weight: 40 kg to 200 kg 
+- Weight: 25 kg to 200 kg 
 - Systolic bp: 90 to 230. The negative numbers (-150, -140, -120, -115, -100) were also kept. Their sign would be changed.
 - Diastolic bp: 40 to 180, and -70 (Negative sign will be changed)
+
+The above numbers limit were decided taking into account possible extreme measured values for the features.\
+Height was given a range of 4 feet 5 inches to 7 feet.\
+The lowest range of weight was taken for an underweight female of height 4 feet 5 inches.\
+The range of systolic and diastolic bp was decided on possible values of hypotension and hypertensive crisis values.\
 
 The categorical variables will first be defined according to healthcare standards.
 - Cholesterol: normal (< 200), Moderate (200-240), High (> 240)
