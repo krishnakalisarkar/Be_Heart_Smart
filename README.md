@@ -49,13 +49,16 @@ There are 3 types of input features:
 **Presence or absence of cardiovascular disease.**
 
 ## Purpose for selecting a heart healthy topic:
+
 Cardiovascular diseases (CVDs) are the leading cause of death globally, taking an estimated 17.9 million lives each year. CVDs are a group of disorders of the heart and blood vessels and include coronary heart disease, cerebrovascular disease, rheumatic heart disease and other conditions. More than four out of five CVD deaths are due to heart attacks and strokes, and one third of these deaths occur prematurely in people under 70 years of age. The most important behavioral risk factors of heart disease and stroke are :
 * unhealthy diet, 
 * physical inactivity, 
 * tobacco use and 
 * harmful use of alcohol. 
 
+
 The effects of behavioral risk factors may show up in individuals as 
+
 * raised blood pressure, 
 * raised blood glucose, 
 * raised blood lipids, 
@@ -63,6 +66,7 @@ The effects of behavioral risk factors may show up in individuals as
 * obesity. 
 
 A healthy heart is central to overall good health. The purpose of this project is to spread awareness among individuals that embracing a healthy lifestyle at any age can prevent heart disease and lower the  risks for  heart attack or stroke.
+
 
 # Initial Exploratory Data Analysis:
 
@@ -90,3 +94,4 @@ A healthy heart is central to overall good health. The purpose of this project i
 ### Effect of alcohol consumption on developing Cardiac disease:
 * From this dataset, it is evident that alcohol consumption alone with no other underlying condition has no effect on developing heart disease.
 * It is yet to be explored if alcohol consumption along with other underlying medical condition has an effect on developing heart disease.
+
