@@ -21,7 +21,7 @@ The following are the ranges of each continuous feature of the dataset, and the 
 - ap_lo diastolic: -70 to 11000
 - Cholesterol: Categorical (1:normal, 2:above normal, 3:well above normal)
 - Glucose: Categorical (1:normal, 2:above normal, 3:well above normal)
-- Smoke : Categorical binary (1-yes, 0-no)
+- Smoker : Categorical binary (1-yes, 0-no)
 - Alcohol intake : Categorical binary (1-yes, 0-no)
 - Physical activity : Categorical binary (1-yes, 0-no)
 - Cardio Y/N : Categorical binary (1-yes, 0-no)(Target)
@@ -48,6 +48,8 @@ The range of systolic and diastolic bp was decided on possible values of hypoten
 The categorical variables will first be defined according to healthcare standards.
 - Cholesterol: normal (< 200), Moderate (200-240), High (> 240)
 - Glucose: normal (< 140), Moderate (140-200), High (> 200) units:mg/dL
+
+Age here is given in days, and it will be converted to years.
 
 Categorical variables will be expanded with one hot encoding.\
 This is to prevent any value of a categorical variable being more than another. For eg. in gender male (2) should not have a greater value than female(1).
