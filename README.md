@@ -1,3 +1,4 @@
+
 # Be Heart Smart ❤
 
 ![image](https://mreib.weebly.com/uploads/5/8/8/0/58809365/heart-health-weeks-banner-jpg-pagespeed-ce-21mh32ls99_orig.jpg)
@@ -94,4 +95,19 @@ A healthy heart is central to overall good health. The purpose of this project i
 ### Effect of alcohol consumption on developing Cardiac disease:
 * From this dataset, it is evident that alcohol consumption alone with no other underlying condition has no effect on developing heart disease.
 * It is yet to be explored if alcohol consumption along with other underlying medical condition has an effect on developing heart disease.
+## Questions expected to be answered with our Machine Learning model
+
+* Is a person at risk of heart disease?
+* What are the potential risk factors for heart disease--smoking, alcohol consumption, obesity, etc?
+* Which factors are the best predictors of heart disease?
+
+## Machine learning models that will used in our analyses
+
+* Our dataset is large with over 60 thousand observations and 11 features. 
+* Our aim is to predict presence of heart disease. Hence accuracy is an important determinat in selecting our model.
+* We try different machine learning algorithms to compare and determine the model that will predict presence of heart disease timely and accurately.
+* Our machine learning model will be a classification model since we have a target variable and which is if the person has a heart disease or not. Hence, the two possible outcomes are: "Yes" or "No".
+* We will be employing supervised machine learning and artificial neural network algorithms for our analysis.
+* The supervised machine learning algorithms we will be using are : 1) Logistic regression, 2) Support vector machine, 3) Random Forests, 4) Gradient Boosting.
+*  We will also be usuing basic neural networks and deep neural network models. These are suitable for interpreting large, complex data and non-linear relationships. They also allows optimizing the model and produce high accuracy results.
 
