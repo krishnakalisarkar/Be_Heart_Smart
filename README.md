@@ -26,7 +26,7 @@ Each collaborator created their individual branch to commit their files.
 
 ## Database:
 
-* A SQL database is created namely "Be_Heart_Smart" and the raw data is inserted in that database.
+* A PostgreSQL database is created namely "Be_Heart_Smart" and the raw data is inserted in that database.
 * A SQL query is generated to create the table:
 
 CREATE TABLE cardio_info (\
