@@ -30,7 +30,7 @@ CREATE TABLE cardio_info_initial_clean (
   cardio numeric
 );
  
- Select * From cardio_info_initial_clean;]
+ Select * From cardio_info_initial_clean;
 
  CREATE TABLE cardio_data_cleaned (
   age numeric,
