@@ -1,0 +1,42 @@
+CREATE TABLE cardio_cleaned (
+  id numeric,
+  Age numeric,
+  gender numeric,
+  height numeric,
+  weight numeric,
+  systolic_bp numeric,
+  diastolic_bp numeric,
+  cholesterol numeric,
+  glucose numeric,
+  smoker numeric,
+  alcohol_intake numeric,
+  active numeric,
+  cardio_disease numeric
+);
+
+CREATE TABLE BMI (
+  id_num numeric,
+  BMI numeric,
+  weight_status varchar,
+  obesity_status varchar
+);
+
+
+create table cardio_cleaned_with_BMI (
+id numeric,
+Age numeric,
+gender numeric,
+height numeric,
+weight numeric,
+systolic_bp numeric,
+diastolic_bp numeric,
+cholesterol numeric,
+glucose numeric,
+smoker numeric,
+alcohol_intake numeric,
+active numeric,
+cardio_disease numeric,
+BMI numeric,
+weight_status varchar,
+obesity_status varchar
+);
