@@ -48,3 +48,22 @@ CREATE TABLE cardio_info_initial_clean (
 );
  
  Select * From cardio_data_cleaned;
+
+ CREATE TABLE cardio_cleaned (
+  id numeric,
+  age numeric,
+  gender numeric,
+  height numeric,
+  weight numeric,
+  systolic_bp numeric,
+  diastolic_bp numeric,
+  cholesterol numeric,
+  glucose numeric,
+  smoker numeric,
+  alcohol_intake numeric,
+  active numeric,
+  cardio numeric
+);
+
+
+ Select * From cardio_cleaned;
