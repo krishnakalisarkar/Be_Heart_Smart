@@ -1,6 +1,6 @@
 # Be Heart Smart ❤
 
-![image]()
+![image](https://mreib.weebly.com/uploads/5/8/8/0/58809365/heart-health-weeks-banner-jpg-pagespeed-ce-21mh32ls99_orig.jpg)
 
 ## Database: 
 A cardio cleaned table is created in PostgreSQL database by using the following schema:
@@ -102,7 +102,7 @@ nn.compile(loss="binary_crossentropy", optimizer="adam", metrics=["accuracy"])
 * In a few instances the input was changed from Relu to Sigmoid and the output was changed from Sigmoid to softmax.
 ## Best results:
 * The neural network model that gave an accuracy of 73%  had the following features:
-* 5 hidden hayers and the distribution of neurons are as follows:
+* 5 hidden hayers and the distribution of neurons are as follows:\
 hidden_nodes_layer1 = 700\
 hidden_nodes_layer2 = 500\
 hidden_nodes_layer3 = 200\
