@@ -178,7 +178,7 @@ Input Layer (+3)"
 	subgraph cluster_1 {
 		color=white
 		rank=same
-		label=" (+690)" labeljust=right labelloc=b
+		label=" (+490)" labeljust=right labelloc=b
 		11 [color="#3498db" fontcolor="#3498db" shape=circle style=filled]
 		12 [color="#3498db" fontcolor="#3498db" shape=circle style=filled]
 		13 [color="#3498db" fontcolor="#3498db" shape=circle style=filled]
@@ -293,7 +293,7 @@ Input Layer (+3)"
 	subgraph cluster_2 {
 		color=white
 		rank=same
-		label=" (+490)" labeljust=right labelloc=b
+		label=" (+290)" labeljust=right labelloc=b
 		21 [color="#3498db" fontcolor="#3498db" shape=circle style=filled]
 		22 [color="#3498db" fontcolor="#3498db" shape=circle style=filled]
 		23 [color="#3498db" fontcolor="#3498db" shape=circle style=filled]
@@ -408,7 +408,7 @@ Input Layer (+3)"
 	subgraph cluster_3 {
 		color=white
 		rank=same
-		label=" (+190)" labeljust=right labelloc=b
+		label=" (+90)" labeljust=right labelloc=b
 		31 [color="#3498db" fontcolor="#3498db" shape=circle style=filled]
 		32 [color="#3498db" fontcolor="#3498db" shape=circle style=filled]
 		33 [color="#3498db" fontcolor="#3498db" shape=circle style=filled]
@@ -523,7 +523,7 @@ Input Layer (+3)"
 	subgraph cluster_4 {
 		color=white
 		rank=same
-		label=" (+90)" labeljust=right labelloc=b
+		label=" (+40)" labeljust=right labelloc=b
 		41 [color="#3498db" fontcolor="#3498db" shape=circle style=filled]
 		42 [color="#3498db" fontcolor="#3498db" shape=circle style=filled]
 		43 [color="#3498db" fontcolor="#3498db" shape=circle style=filled]
@@ -545,127 +545,12 @@ Input Layer (+3)"
 	48 -> 51
 	49 -> 51
 	50 -> 51
-	41 -> 52
-	42 -> 52
-	43 -> 52
-	44 -> 52
-	45 -> 52
-	46 -> 52
-	47 -> 52
-	48 -> 52
-	49 -> 52
-	50 -> 52
-	41 -> 53
-	42 -> 53
-	43 -> 53
-	44 -> 53
-	45 -> 53
-	46 -> 53
-	47 -> 53
-	48 -> 53
-	49 -> 53
-	50 -> 53
-	41 -> 54
-	42 -> 54
-	43 -> 54
-	44 -> 54
-	45 -> 54
-	46 -> 54
-	47 -> 54
-	48 -> 54
-	49 -> 54
-	50 -> 54
-	41 -> 55
-	42 -> 55
-	43 -> 55
-	44 -> 55
-	45 -> 55
-	46 -> 55
-	47 -> 55
-	48 -> 55
-	49 -> 55
-	50 -> 55
-	41 -> 56
-	42 -> 56
-	43 -> 56
-	44 -> 56
-	45 -> 56
-	46 -> 56
-	47 -> 56
-	48 -> 56
-	49 -> 56
-	50 -> 56
-	41 -> 57
-	42 -> 57
-	43 -> 57
-	44 -> 57
-	45 -> 57
-	46 -> 57
-	47 -> 57
-	48 -> 57
-	49 -> 57
-	50 -> 57
-	41 -> 58
-	42 -> 58
-	43 -> 58
-	44 -> 58
-	45 -> 58
-	46 -> 58
-	47 -> 58
-	48 -> 58
-	49 -> 58
-	50 -> 58
-	41 -> 59
-	42 -> 59
-	43 -> 59
-	44 -> 59
-	45 -> 59
-	46 -> 59
-	47 -> 59
-	48 -> 59
-	49 -> 59
-	50 -> 59
-	41 -> 60
-	42 -> 60
-	43 -> 60
-	44 -> 60
-	45 -> 60
-	46 -> 60
-	47 -> 60
-	48 -> 60
-	49 -> 60
-	50 -> 60
-	subgraph cluster_5 {
-		color=white
-		rank=same
-		label=" (+40)" labeljust=right labelloc=b
-		51 [color="#3498db" fontcolor="#3498db" shape=circle style=filled]
-		52 [color="#3498db" fontcolor="#3498db" shape=circle style=filled]
-		53 [color="#3498db" fontcolor="#3498db" shape=circle style=filled]
-		54 [color="#3498db" fontcolor="#3498db" shape=circle style=filled]
-		55 [color="#3498db" fontcolor="#3498db" shape=circle style=filled]
-		56 [color="#3498db" fontcolor="#3498db" shape=circle style=filled]
-		57 [color="#3498db" fontcolor="#3498db" shape=circle style=filled]
-		58 [color="#3498db" fontcolor="#3498db" shape=circle style=filled]
-		59 [color="#3498db" fontcolor="#3498db" shape=circle style=filled]
-		60 [color="#3498db" fontcolor="#3498db" shape=circle style=filled]
-	}
-	51 -> 61
-	52 -> 61
-	53 -> 61
-	54 -> 61
-	55 -> 61
-	56 -> 61
-	57 -> 61
-	58 -> 61
-	59 -> 61
-	60 -> 61
 	subgraph cluster_output {
 		node [color="#2ecc71" fontcolor="#2ecc71" shape=circle style=filled]
 		color=white
 		rank=same
 		labeljust=1
-		61 [color="#e74c3c" fontcolor="#e74c3c" shape=circle style=filled]
+		51 [color="#e74c3c" fontcolor="#e74c3c" shape=circle style=filled]
 		label="Output Layer" labelloc=bottom
 	}
 	arrowShape=none
