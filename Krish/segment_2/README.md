@@ -1,6 +1,6 @@
 # Be Heart Smart ❤
 
-![image](Krish/segment_2/images/neural_model.png)
+![image](https://mreib.weebly.com/uploads/5/8/8/0/58809365/heart-health-weeks-banner-jpg-pagespeed-ce-21mh32ls99_orig.jpg)
 
 ## Database: 
 A cardio cleaned table is created in PostgreSQL database by using the following schema:
