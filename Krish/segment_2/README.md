@@ -1,6 +1,6 @@
 # Be Heart Smart ❤
 
-![image]()
+![image](Krish/segment_2/images/neural_model.png)
 
 ## Database: 
 A cardio cleaned table is created in PostgreSQL database by using the following schema:
