@@ -5,7 +5,7 @@
 ## Database: 
 A cardio cleaned table is created in PostgreSQL database by using the following schema:
 
-CREATE TABLE cardio_cleaned_again (\
+CREATE TABLE final_cardio_cleaned (\
 	id numeric PRIMARY KEY,\
 	Age numeric NOT NULL,\
 	gender numeric NOT NULL,\
@@ -25,13 +25,13 @@ Once the table is created, the data is imported from the csv file.
 
 Another table BMI is also created including the BMI that was calculated from the height and weight of the patients. The following schema is used to make the table.
 
-CREATE TABLE BMI (\
+CREATE TABLE final_BMI (\
 	id numeric PRIMARY KEY NOT NULL,\
 	BMI numeric NOT NULL,\
 	weight_status VARCHAR NOT NULL,\
 	obesity_status VARCHAR NOT NULL\
 );
-Once the table is created, the data is imported from the respective csv file.
+Once the table is created, the data is imported from the respective csv files.
 
 This was followed by joining the two tables on their ID which is their primary key, to create a cardio complete table. This was done using the following code:
 
@@ -51,9 +51,9 @@ SELECT c.id,\
 	b.bmi,\
 	b.weight_status,\
 	b.obesity_status\
-INTO cardio_complete\
-FROM cardio_cleaned_again AS c\
-INNER JOIN BMI AS b\
+INTO final_cardio_bmi_complete\
+FROM final_cardio_cleaned AS c\
+INNER JOIN final_BMI AS b\
 ON (c.id = b.id);\
 
 Once the cardio complete table is created, it is then connected to Jupyter notebook using SQL alchemy.

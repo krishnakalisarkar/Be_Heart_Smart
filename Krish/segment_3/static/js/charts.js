@@ -96,6 +96,9 @@ function buildCharts(sample) {
      // D3d. Create a variable to hold washing frequency
      var cardio_disease = output.cardio_disease;
      console.log(cardio_disease);
+
+
+
 //  Creating the trace for the gauge chart.
       var gaugeData = [{
       value: cardio_disease,
@@ -129,6 +132,7 @@ function buildCharts(sample) {
   paper_bgcolor: "lightcoral",
   automargin: true
 };
+
     // Using Plotly to plot the gauge data and layout.
     Plotly.newPlot("gauge", gaugeData, gaugeLayout);
 
