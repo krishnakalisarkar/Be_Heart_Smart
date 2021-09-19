@@ -12,6 +12,11 @@ config_RDS.py
 
 config.py
 
+config1.py
+.Rhistory
+
+
+
 # Byte-compiled / optimized / DLL files
 
 __pycache__/
