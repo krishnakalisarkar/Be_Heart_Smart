@@ -1,3 +1,7 @@
+
+config.py
+config2.py
+
 # Adding config.py
 
 # Adding config.py file
@@ -7,6 +11,7 @@ config_RDS.py
 
 
 config.py
+
 # Byte-compiled / optimized / DLL files
 
 __pycache__/
