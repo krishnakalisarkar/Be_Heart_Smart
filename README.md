@@ -53,3 +53,19 @@ Age here is given in days, and it will be converted to years.
 
 Categorical variables will be expanded with one hot encoding.\
 This is to prevent any value of a categorical variable being more than another. For eg. in gender male (2) should not have a greater value than female(1).
+
+## Machine Learning
+
+### Logistic Regression
+
+Logistic Regression model was used to predict the outcome of cardiovascular disease based upon the given variables.\
+Exploratory data analysis was performed on the data that was cleaned using PySpark. The various graphs and figures will be found in the pictured folder. Various useful insights were obtained, and data was further processed.
+- Blood pressure and age were found to hace maximum influence on the cardiovascular health. 
+- A new variable "BMI" was calculated using height and weight information, in order to tie up the two independent variable into one. Information from the CDC website was used to obtain the relationship to calculate BMI.
+- BMI information was further used to create another categorical variable "is_obese" where it is "yes" for BMI >30, and "no" otherwise.
+using the information from the cardio data.
+Both datasets were loaded into PostgreSQL, and joined. The merged database is loaded into a DataFrame here, and analyzed, and further trimmed down to minimize noise. For eg. another variable "pulse_pressure" is created using the systolic and diastolic bp to further keep the values that are observed in human populations.
+The data is columns are divided into the target and features. A classic logistic regression model is initiated and cross validated across the dataset using KFold cross validation.
+The data is divided into a training and testing set, and then scaled using the standard scaler The model is fit on the scaled training set, and then is used to tranform the scaled training, and testing set. The predicted values are obtained, and the accuracy, confusion matrix, and classification report is created.
+
+###
