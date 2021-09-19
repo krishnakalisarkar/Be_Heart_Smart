@@ -1,0 +1,30 @@
+body {
+    color:rgb(136, 2, 2);   
+  }
+  p {
+    font-family: "Arial", Times, serif;
+    border-style: solid;
+    padding: 10px;
+    background-color: antiquewhite;
+    text-align: justify;
+    font-size: 15px;
+  }
+  .jumbotron {
+    border: 10px;
+    width: 100%;
+    height: auto;
+    background-size:contain;
+  }  
+ h1 {
+     text-align: center;
+     vertical-align: top;
+     position: relative;
+         
+ }
+ h2{
+    text-align: center;
+    position: relative;
+    float: top;
+   
+}
+

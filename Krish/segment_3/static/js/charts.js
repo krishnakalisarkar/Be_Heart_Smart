@@ -93,11 +93,15 @@ function buildCharts(sample) {
       // Create a variable that holds the first sample in the array.
     var output = cardio[0];
     console.log(output);
-     // D3d. Create a variable to hold washing frequency
+     // Create a variable to hold cardio_disease
      var cardio_disease = output.cardio_disease;
      console.log(cardio_disease);
-
-
+    // Create a variable to holds height
+     var height = output.height;
+     console.log(height);
+     // Create a variable to holds weight
+     var weight = output.weight;
+     console.log(weight);
 
 //  Creating the trace for the gauge chart.
       var gaugeData = [{
