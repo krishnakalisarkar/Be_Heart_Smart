@@ -166,7 +166,7 @@ A healthy heart is central to overall good health. The purpose of this project i
 
 
 ## Random Forest Model
-### Feature engineering and preprocessin
+### Feature engineering and preprocessing
 
 * Height and weight alone may not be very meaningful predictors of cardiovascular disease while a combination of these variables may be a better determinant.
 * Hence, we create 3 new variables using weight and height variables: bmi, weight_status (underweight, normal,overweight, obese) and obesity_status (yes/no).
@@ -184,27 +184,50 @@ A healthy heart is central to overall good health. The purpose of this project i
 * Therefore, our data was split into 10 folds and at each model different combination of 9 folds are used for training and the remaining 1 fold is used for testing. 
 * The roc_auc of the 10 folds are as follows:
 
-* The mean roc_auc score of the 10 folds is:
+![ROC-AUC Score of the 10 folds](Ayse/Segment_2/images/roc_auc_original.png)
+
+* The mean roc_auc score of the 10 folds is: 
+
+![Mean ROC-AUC Score](Ayse/Segment_2/images/mean_roc_auc_original.png)
 
 ### Feature Selection with feature_importances
 
 * To check for important features we split that data into train and test sets using sklearn's train_test_split. We set 20% of our data as a test set and 80% of it as a training set.
 * We standardize the data with StandardScaler and use the scaled data to get the feature_importances.
+
+![Feature Importances](Ayse/Segment_2/images/feature_importances_RF.png)
+
+
 * From feature importances we can see that BMI is the most important predictor of cardiovascular disease. The top 4 predictors of cardiovascular disease are bmi, age, systolic_bp and diastolic_bp respectively. We can create a model using only these variables and investigate if the performance of our model increases using SelectFromModel. SelectFromModel chooses the features that have greater importance than the mean importance of all the features. Gini impurity is used to determine the importance of a feature.
 * However, the performance of the model did not change with the selected. So, we decideded to keep them.
-* We train our model on the scaled dataset and predict it on the test dataset to obtain the accuracy score, confusion matrix and the classification report.
+* We retrain our model on the scaled dataset and predict it on the test dataset to obtain the accuracy score, confusion matrix and the classification report.
 * The accuracy score, the confusion matrix and classification report for our model are shown below:
+
+![Confusion Matrix](Ayse/Segment_2/images/cf_matrix_original.png) 
+
+![Classification Report](Ayse/Segment_2/images/cr_original.png)
 
 * Even though the mean roc_auc score of our RF model is about 0.75, the accuracy score is much lower, 0.69. We perform hypertuning to find the best model.
 * We search for the best parameters using scikit_learn's GridSearchCV function. We use 5-fold cross-validation for this stage because it was computationally very time consuming with the 10-fold. Also, we had to limit the parameters we wanted to pass in our GridSearchCV function because it became computationally impossible to complete the process with our resources.
 * The best parameters with the grid search are displayed below:
+
+![Best Parameters of the Grid Search](Ayse/Segment_2/images/best_params.png)
 
 * Based on the results of the grid search we plug in the best parameters and recreate our random classifier model.
 * We retrain our model with the new hyperparameters.
 * We predict the new model and our accuracy score, confusion matrix and classification report are displayed below.
 
 
+![Confusion Matrix Tuned](Ayse/Segment_2/images/cf_matrix_tuned.png) 
+
+![Classification Report Tuned](Ayse/Segment_2/images/cr_tuned.png)
+
+
 * We obtain our roc_auc scores and the mean score for the new model.
+
+![ROC-AUC Score of the 10 folds Tuned](Ayse/Segment_2/images/roc_auc_tuned.png)
+
+![Mean ROC-AUC Score Tuned](Ayse/Segment_2/images/mean_roc_auc_tuned.png)
 
 
 * With hyperparameter tuning we were able to increase both the accuracy and roc-auc score. The accuracy score increased to 0.73 from 0.69, and the mean roc_auc score increased to almost 0.80 from 0.745. However, from the classification report we can see that our recall for the people with cardiovascular disease decreased (from 0.69 to 0.67) even though precision increased significantly (0.69 to 0.76). Since we would want our model to be able to predict people with or at risk of cardiovascular disease accurately we would like our recall score for the people that have heart disease (class 1) to be high. Also, with the tuned model the false negatives are higher and true positives are lower which we would not want.
@@ -218,6 +241,7 @@ A healthy heart is central to overall good health. The purpose of this project i
 * Maintains accuracy even when a large proportion of the data is missing
 * They are easily intepretable
 * They provide the important features
+* Scaling is not needed to achieve good accuracy
 
 ### Limitations of Random Forest
 
@@ -227,6 +251,6 @@ A healthy heart is central to overall good health. The purpose of this project i
 * Data containing groups of correlated features of similar relevance for the output.
 
 
-
+Resources used: 
 https://medium.com/@aravanshad/gradient-boosting-versus-random-forest-cfa3fa8f0d80
 https://medium.com/analytics-vidhya/random-forest-classifier-and-its-hyperparameters-8467bec755f6
