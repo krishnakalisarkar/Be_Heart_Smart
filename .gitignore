@@ -1,9 +1,22 @@
+
+config.py
+config2.py
+
+# Adding config.py
+
 # Adding config.py file
 config.py
 config_RDS.py
 
 
+
 config.py
+
+config1.py
+.Rhistory
+
+
+
 # Byte-compiled / optimized / DLL files
 
 __pycache__/
