@@ -266,18 +266,18 @@ Once the cardio complete table is created, it is then connected to Jupyter noteb
 * What are the potential risk factors for heart disease--smoking, alcohol consumption, obesity, etc?
 * Which factors are the best predictors of heart disease?
 
-### Machine learning models that will used in our analysis:
+### Machine learning models that was used in our analysis:
 
 * Our dataset is large with over 60 thousand observations and 11 features. 
 * Our aim is to predict presence of heart disease. Hence sensitivity/recall will play an important determinant in selecting our model.
-* We try different machine learning algorithms to compare and determine the model that will predict presence of heart disease timely and accurately.
-* Our machine learning model will be a classification model since we have a target variable and which is if the person has a heart disease or not. Hence, the two possible outcomes are: "Yes" or "No".
-* We will be employing supervised machine learning and artificial neural network algorithms for our analysis.
-* The supervised machine learning algorithms we will be using are : 
+* We tried different machine learning algorithms to compare and determine the model that will predict presence of heart disease timely and accurately.
+* Our machine learning models were classification models since we have a target variable, and which is if the person has a heart disease or not. Hence, the two possible outcomes are: "Yes" or "No".
+* We employed supervised machine learning and artificial neural network algorithms for our analysis.
+* The supervised machine learning algorithms we used were : 
 1) Logistic regression,
 2) Random Forests, 
 
-*  We will also be using deep neural network models. 
+*  We also used deep neural network models. 
 
 ### Reasons:
 
@@ -293,7 +293,7 @@ Various steps were performed leading to and during logistic regression.\
 
 #### EDA on the Cleaned Data
 
-Data was loaded from PostgreSQL database Be_Heart_Smart, using sqlAlchemy to create a connection between the database and the jupyter notebook file, into a DataFrame cardio_cleaned_df. EDA was performed on the cleaned data, and the following insights were gained. (The various graphs and figures will be found in the picture folder.) 
+Data was loaded from PostgreSQL database Be_Heart_Smart, using sqlAlchemy to create a connection between the database and the jupyter notebook file, into a DataFrame cardio_cleaned_df. EDA was performed on the cleaned data, and the following insights were gained. (The various graphs and figures will be found in the folder Pictures/Segment_2/Images_Subhangi.) 
 
 * A density plot of age showed substantial overlap for cardio_disease positive (cardio_positive) and cardio_disease negative (cardio_negative) individuals. However the shift in peaks of the distribution indicates that for advanced age (over 55years), chances of developing cardiovascular disease increases.
 * A density plot of weight showerd substantial overlap for cardio_positive cardio_negative individuals with a marginal shift of cardio_positive towards higher weight.
@@ -307,7 +307,7 @@ Data was loaded from PostgreSQL database Be_Heart_Smart, using sqlAlchemy to cre
 
 #### Feature engineering
 
-Feature engineering was performed at different stages.\
+Feature engineering was performed at different stages.
 * Height and weight information were combined into a new feature called "BMI" in order to tie up the two independent variable into one. Information from the CDC website was used to obtain the relationship to calculate BMI.
 * BMI was further used to create to create two more categorical features.
 	- obesity_status was created as a broad classification of BMI with value "yes" for BMI > 30, and value "no" otherwise.
@@ -317,7 +317,8 @@ Feature engineering was performed at different stages.\
 #### Table joining in the database
 
 * A new DataFrame called BMI_df was created with the columns BMI, weight_status, obesity_status. This was extracted into final_BMI.csv, and loaded into the PostgreSQL Be_heart_Smart database as a new table called final_bmi_status.
-* The tables final_cardio_cleaned and final_bmi_status were joined in SQL into a new table final_cardio_combined. 
+* The tables final_cardio_cleaned and final_bmi_status were joined in SQL into a new table final_cardio_combined.
+* A generalized schema of the tables is shown in the database section here. The specific code for joining and pictures will be found in the folder Pictures/Segment_2/Images_Subhangi.)
 
 #### Feature selection
 
@@ -334,10 +335,10 @@ A correlation matrix was made to help in selecting the features for logistic reg
 
 #### Kfold cross-validation and logistic regression
 
-A classic logistic regression model was initiated and cross validated across the dataset using KFold cross validation.\
+A classic logistic regression model was initiated and cross validated across the dataset using KFold cross validation with k=10. The scores of all 10 folds were very similar around 72% indicating the model does not overfit.\
 The data was divided into a training and testing set in a 75:25 ratio.\
 Data was scaled using the standard scaler.\
-The model is fit on the scaled training set, and then is used to tranform the scaled training, and testing set. The predicted values are obtained, and the accuracy, confusion matrix, and classification report were created.\
+The model was fit on the scaled training set, and then was used to tranform the scaled training, and testing set. The predicted values are obtained, and the accuracy, confusion matrix, and classification report were created.\
 - Accuracy : 72.5%
 - Precision : 75%
 - Recall : 67 %
@@ -348,9 +349,9 @@ The model is fit on the scaled training set, and then is used to tranform the sc
 
 The purpose of this algorithm is to predict whether cardio_disease will exist for a given set of conditions. In this situation the recall/sensitivity of predicting cardio_disease is required to be high, and false negatives need to be minimised.\
 Various trails of logistic regression were performed earlier that involved selecting different combinations of features, cleaning the data with different conditions ect. The results obtained did not vary much for this model of logistic regression.\
-The following code was to fine tune the threshold used in predicting the binary classifier results. The default value for threshold is 0.5. This value can be fine tuned towards obtaining maximizing recall.ROC-AUC metric was used for this purpose.
+The following code was to fine tune the threshold used in predicting the binary classifier results. The default value for threshold is 0.5. This value can be fine tuned towards obtaining maximizing recall. ROC-AUC metric was used for this purpose.
 
-Plots were created of TPR vs FPR, Precision/Recall vs Threshold, and Precision vs Recall. (The plots are in the folder pictures).
+Plots were created of TPR vs FPR, Precision/Recall vs Threshold, and Precision vs Recall. (The plots are in the folder the folder Pictures/Segment_2/Images_Subhangi.)
 
 Using the above plots, a threshold of 0.4 was set, which resulted in a recall of 80%, accuracy of 71.4%, and a precision of 68%.
 
@@ -469,7 +470,8 @@ nn.compile(loss="binary_crossentropy", optimizer="adam", metrics=["accuracy"])
 * The accuracy of this model was 71%
 * Various other trials were made where the hidden layers were increased to 5 and the number of neurons in each layers were increased.
 * In a few instances the input was changed from Relu to Sigmoid and the output was changed from Sigmoid to softmax.
-## Best results:
+
+#### Best result from the Neural Network Model:
 * The neural network model that gave an accuracy of 73%  had the following features:
 * 5 hidden hayers and the distribution of neurons are as follows:\
 hidden_nodes_layer1 = 700\
@@ -494,7 +496,3 @@ nn.compile(loss="binary_crossentropy", optimizer ="rmsprop", metrics=["accuracy"
 	- The gauge indicator will show if the user is cardio_positive (1) or cardio_negative (0).
 	- At this time, the gauge indicator will show if the patient (based on ID chosen) is at a risk of developing a heart disease.0 shows not at risk and 1 shows is at risk.
 * The horizontal bar graph shows the primary factors that are responsible for developing a heart disease.
-
-
-
-
