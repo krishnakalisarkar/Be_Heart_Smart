@@ -254,7 +254,8 @@ ON (c.id = b.id);\
 
 Once the cardio complete table is created, it is then connected to Jupyter notebook using SQL alchemy.
 
-* Once the AWS connection was set up, the joined data table was pulled from the AWS server to our local PostgresSQL server and from here on this table is called into the jupyter notebook for further analysis.
+* An AWS server connection was created in PostgreSQL and a database set up. The preliminary joined data table was made here, from where a connection was established with the jupyter notebooks for future analysis.\
+The final tables however were joined in the database in local PostgreSQL server, and accessed with SQLAlchemy for machine learning.
 
 
 ## Machine Learning
@@ -288,7 +289,7 @@ Once the cardio complete table is created, it is then connected to Jupyter noteb
 Logistic Regression is one of the machine learning algorithms 
 model used here to predict the outcome of cardiovascular disease based upon the given features.\
 Logistic Regression is an ideal algorithm for binary classification problems.\
-Various steps were performed leading to and during logistic regression.\
+Various steps were performed leading to, and during logistic regression.
 
 #### EDA on the Cleaned Data
 
@@ -304,7 +305,7 @@ Data was loaded from PostgreSQL database Be_Heart_Smart, using sqlAlchemy to cre
 * A very visible shift towards higher numbers were observed in blood pressure (for both diastolic and systolic) in cardio_positive individuals.
 * Blood pressure was also shown to be increasing with age for cardio_negative individuals, whereas it remained steady at a higher number in cardio_positive individuals.
 
-#### Feature engineering
+#### Feature Engineering
 
 Feature engineering was performed at different stages.
 * Height and weight information were combined into a new feature called "BMI" in order to tie up the two independent variable into one. Information from the CDC website was used to obtain the relationship to calculate BMI.
@@ -313,48 +314,87 @@ Feature engineering was performed at different stages.
 	- weight_status was created as finer classification of BMI. This was done to provide options to run machine learning algorithms with different demarcation for the same information. Weight status was assigned according to the CDC.gov website, as follows: underweight (BMI<=18.5) , normal (18.5<BMI<25), overweight (25<=BMI<30), and obese (BMI>=30).
 * A new feature called "pulse_pressure" was created that measured  the difference between systolic and diastolic blood pressure for each observation.
 
-#### Table joining in the database
+#### Table Joining in the Database
 
 * A new DataFrame called BMI_df was created with the columns BMI, weight_status, obesity_status. This was extracted into final_BMI.csv, and loaded into the PostgreSQL Be_heart_Smart database as a new table called final_bmi_status.
 * The tables final_cardio_cleaned and final_bmi_status were joined in SQL into a new table final_cardio_combined.
 * A generalized schema of the tables is shown in the database section here. The specific code for joining and pictures will be found in the folder Pictures/Segment_2/Images_Subhangi.)
 
-#### Feature selection
+#### Data Processing
 
 The table final_cardio_combined was reloaded from PostgreSQL Be-Heart_Smart into a pandas DataFrame cardio_df. Numerical values were generated for weight_status and obesity_status, and other categorical variables were converted into indicator variables using get_dummies. The first column was dropped to reduce redundancy. The column names were changed and the columns rearranged into a meaningful order.\
 Few more observations were eleminated on the following conditions,
 	- Pulse pressure below 20 was removed to keep only positive values, and within a range observed in the human population.
 	- BMI greater than 60 and lower than 15 were eliminated.
 This brought the total number of observations to 67,466.\
-A correlation matrix was made to help in selecting the features for logistic regression.
-* Highly correlated variables, or those with redundant information were dropped. These included "weight", "obese", "is_obese", "diastolic_bp", and "pulse_pressure".
-* Variables that had no or low influence on presence of cardio_disease like "id" and "weight" were dropped.
-* The following 14 variables remaining were "age", "gender_M", "BMI", "underweight", "overweight", "systolic_bp", "cholesterol_moderate", "cholesterol_high", "glucose_moderate", "glucose_high", "smoker", "alcohol_intake", "active", and "cardio_disease".
+A correlation matrix showed the relationship between the variables. We notice correlation between the following,
+	- height, and weight
+	- weight and BMI (strong)
+	- weight and obese (and is_obese)
+	- BMI and obese (strong)
+	- overweight and obese
+	- systolic_bp and pulse pressure (strong)
+	- systolic_bp and diastolic_bp (strong)
+	- cholesterol_high and glucose_high
+	- smoker and alcohol_intake (small)
+
+#### Data Preparation for Initial Modeling
+
+* "tbl_id" was dropped.
 * Varibles were divided into Target, which inculded "cardio_disease", and Features, which included the remaining variables.
+* The data points were then split into three sets as Train, Validate, and Test in the ratio 60:20:20.
+* Data was scaled using the standard scaler.The model was fit on the scaled training set, and then was used to tranform the scaled training, and testing set.
 
-#### Kfold cross-validation and logistic regression
 
-A classic logistic regression model was initiated and cross validated across the dataset using KFold cross validation with k=10. The scores of all 10 folds were very similar around 72% indicating the model does not overfit.\
-The data was divided into a training and testing set in a 75:25 ratio.\
-Data was scaled using the standard scaler.\
-The model was fit on the scaled training set, and then was used to tranform the scaled training, and testing set. The predicted values are obtained, and the accuracy, confusion matrix, and classification report were created.\
-- Accuracy : 72.5%
-- Precision : 75%
-- Recall : 67 %
+#### Stratified Kfold cross-validation 
 
-(attach pictures)
+Before we proceed, we need to address what is the performace metric we need to consider here.\
+Predicting an individial has cardiovascular disease when he/she does not is a false positive. This will result in loss of peace of mind for the individual, and perhaps more medical tests to reach the correct conclusions.\
+However,  incorrectly predicting an individual to be cardiac healthy has a much greater consequence. A False negative puts the individual at risk.\
+Therefore, in this case recall or sensitivity to be maximized, because greater the recall the lesser are the chances of false negative predictions.
 
-#### Increase Recall for true prediction of existence of cardio_disease
+A Linear Regression model was initiated, and crossvalidated on the training set using stratified KFold cross-validation, with a k=10 number of folds.\
+The model was evaluated by scoring recall. The recall scores of all 10 folds were very similar around 66%, indicating that the model did not overfit.
 
-The purpose of this algorithm is to predict whether cardio_disease will exist for a given set of conditions. In this situation the recall/sensitivity of predicting cardio_disease is required to be high, and false negatives need to be minimised.\
-Various trails of logistic regression were performed earlier that involved selecting different combinations of features, cleaning the data with different conditions ect. The results obtained did not vary much for this model of logistic regression.\
-The following code was to fine tune the threshold used in predicting the binary classifier results. The default value for threshold is 0.5. This value can be fine tuned towards obtaining maximizing recall. ROC-AUC metric was used for this purpose.
+#### Feature selection
 
-Plots were created of TPR vs FPR, Precision/Recall vs Threshold, and Precision vs Recall. (The plots are in the folder the folder Pictures/Segment_2/Images_Subhangi.)
+Sequential Feature Selector was used applying the Sequential Forward Selection (SFS) algorithm.
 
-Using the above plots, a threshold of 0.4 was set, which resulted in a recall of 80%, accuracy of 71.4%, and a precision of 68%.
+SFS was initially scored on recall, and tho features - "underweight", and "alcohol_intake" were marked to give the best performance.\
+On training logistic regression with these two features on the scaled train set, and testing on the scaled validation set, a recall of 94% is achieved.\
+However the accuracy drops to 50%, like a random chance of the model being able to correctly predict the outcome of whether a patient is positive or negative for heart disease.\
+The incorrect prediction of the model in this case would be biased towards false positives, but because the model will correctly predict only half the time, this model was not considered any further.
 
-(add pictures).
+SFS was executed again but this time performance was scored on the harmonic mean. The following six features were chosen as important.\
+age, underweight, is_obese, systolic_bp, pulse_pressure, cholesterol_high, active.
+
+The scaled train, validation, and test sets were trimmed down to include only the above seven features. A correlation matrix showed the a high correlation between the systolic+bp and pulse pressure, as expected. However both features were kept for the machine learning. 
+
+The model was fit on the scaled train set, and tested on the validation set. Recall of 67%, f1 score of 71%, with an accuracy of 72.6% was achieved. 
+
+(attach pictures of the classification report)
+
+#### Increase Recall for true prediction of existence of cardio_disease by hypertuning the threshold
+
+Hypertuning of the model was the next step to improve the recall without losing the accuracy.
+
+A Reciever Operating Characteristic (ROC) curve was plotted, and it showed an AUC score of 78%.\
+The AUC_ROC strategy calculated the threshold to be around 0.47.
+
+Recall/Precision vs Threshold graph showed that recall drops quickly as threshold increases. Precision increases as threshold increases but the change is not as daramatic as the recall curve.\
+The precision vs recall curve gave a clearer picture of thier relationship. Based on this, a threshold of 0.4 was chosen to optimize recall without greatly compromising accuracy or the harmonic mean.\
+(The plots are in the folder the folder Pictures/Segment_2/Images_Subhangi.)
+
+The logistic regression model was re-run on the validation set, which gave a recall of 80.9% with an accuracy of 70.6%
+
+The model in its final form was then executed on the scaled test set. This set of data was not "seen" by the model in earlier steps to reduce data leakage. Logistic regression on the test set gave a recall of 81%, precision of 67.2%, and an accuracy of 70.8%.
+
+(add pictures of the final model report)
+
+#### Takeaway from Logistic Regression
+
+The takeaway from the above exercise was that the nature of the dataset was such that the best overall accuracy was around 70%, and the precision and the recall are tied up such that if recall were to be maximised by manipulating the data, accuracy, and precision would quickly fall.\
+A better way to improve the recall without losing out on the accuracy or the harmonic mean was to instead hypertune the model by lowering the threshold from it's default of 0.5 to 0.4 to positively predict cardiac disease.
 
 
 ### Random Forest Model
