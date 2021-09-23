@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Be Heart Smart</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../static/css/style.css">
+</head>
+
+<body>
+
+  <div class="container" style = "background-color:#ecc0c0">
+    <div class="row">
+      <div class="col-md-12 jumbotron" style = "background-image: url(https://mreib.weebly.com/uploads/5/8/8/0/58809365/heart-health-weeks-banner-jpg-pagespeed-ce-21mh32ls99_orig.jpg)">
+      
+        <h1 class="panel-title" style="color: rgb(241, 209, 112)">Be Heart Smart</h1>
+        <h2 class="panel-title" style="color:rgb(238, 230, 117)" >Use the interactive charts below to explore the dataset</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2">
+        <div class="well"style ="background-color:rgb(136,2,2)">
+          <h5 class="panel-title" style="color: whitesmoke">Patients ID No:</h5>
+          <!-- <select id="selDataset"></select> -->
+          <select id="selDataset" onchange="optionChanged(this.value)"></select>
+        </div>
+        <div class="panel panel-primary"style = "background-color:antiquewhite">
+          <div class="panel-heading" style="background-color:rgb(136, 2, 2)">
+            <h3 class="panel-title">Demographic Info</h3>
+          </div>
+          <div id="sample-demographic" class="panel-body"></div>
+        </div>
+      </div>
+      <div class = "col-md-10">
+        <p>
+          Cardiovascular diseases (CVDs) are the leading cause of death globally, taking an estimated 17.9 million lives each year. CVDs are a group of disorders of the heart and blood vessels and include coronary heart disease, cerebrovascular disease, rheumatic heart disease and other conditions. More than four out of five CVD deaths are due to heart attacks and strokes, and one third of these deaths occur prematurely in people under 70 years of age. The most important behavioral risk factors of heart disease and stroke are:
+          • unhealthy diet,
+          •	physical inactivity,
+          •	tobacco use and
+          •	harmful use of alcohol.
+          The effects of behavioral risk factors may show up in individuals as
+          •	raised blood pressure,
+          •	raised blood glucose,
+          •	raised blood lipids,
+          •	overweight and
+          •	obesity.
+          A healthy heart is central to overall good health. The purpose of this project is to spread awareness among individuals that embracing a healthy lifestyle at any age can prevent heart disease and lower the risks for heart attack or stroke.
+          
+        </p>
+        <div class="col-md-10">
+          <p><a class="btn btn-primary btn-lg" href="/scrape"
+              role="button">Scrape Latest News</a></p>
+        </div>  
+
+        <!-- Cardiac Health News -->
+        <div class="row" id="cardio-news">
+          <div class="col-md-12">
+              <div class="media">
+                  <div class="media-body">
+                      <h2>Latest News About Cardiac Health</h2>
+                      <h3 class="media-heading">{{title}}</h3>
+                      <p>{{cardio.news_paragraph}}</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      
+      <div class="col-md-7">
+        <div id="bar"></div>
+      </div>
+      <div class="col-md-5">
+        <div id="gauge"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div id="bubble"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Required dependencies -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="../static/js/charts.js"></script>
+  
+</body>
+
+</html>
