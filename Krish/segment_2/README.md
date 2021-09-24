@@ -115,7 +115,7 @@ nn.compile(loss="binary_crossentropy", optimizer ="rmsprop", metrics=["accuracy"
 
 ## Dashboard
 
-[❤ CLICK ME](http://127.0.0.1:5501/index.html).
+[❤ CLICK ME]( https://krishnakalisarkar.github.io/Be_Heart_Smart/).
 
 * The dashboard is slowly taking shape.
 * The dashboard is made interactive
