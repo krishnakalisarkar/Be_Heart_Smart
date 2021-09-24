@@ -13,6 +13,7 @@ mongo = PyMongo(app)
 def index():
     cardio = mongo.db.cardio.find_one() 
     return render_template("index.html", cardio=cardio)
+    #return "Hello WOrld"
       
   
 

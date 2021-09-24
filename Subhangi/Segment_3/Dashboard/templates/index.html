@@ -35,7 +35,7 @@
         </div>
       </div>
       <div class = "col-md-10">
-        <p>
+        <p id="description">
           Cardiovascular diseases (CVDs) are the leading cause of death globally, taking an estimated 17.9 million lives each year. CVDs are a group of disorders of the heart and blood vessels and include coronary heart disease, cerebrovascular disease, rheumatic heart disease and other conditions. More than four out of five CVD deaths are due to heart attacks and strokes, and one third of these deaths occur prematurely in people under 70 years of age. The most important behavioral risk factors of heart disease and stroke are:
           • unhealthy diet,
           •	physical inactivity,
@@ -50,25 +50,26 @@
           A healthy heart is central to overall good health. The purpose of this project is to spread awareness among individuals that embracing a healthy lifestyle at any age can prevent heart disease and lower the risks for heart attack or stroke.
           
         </p>
-        <div class="col-md-10">
-          <p><a class="btn btn-primary btn-lg" href="/scrape"
-              role="button">Scrape Latest News</a></p>
-        </div>  
 
         <!-- Cardiac Health News -->
         <div class="row" id="cardio-news">
-          <div class="col-md-12">
+          <div class="col-md-12" style="padding:10px">
               <div class="media">
                   <div class="media-body">
                       <h2>Latest News About Cardiac Health</h2>
-                      <h3 class="media-heading">{{title}}</h3>
-                      <p>{{cardio.news_paragraph}}</p>
+                      <div class="container" style="background-color: antiquewhite" style="border-style:solid">
+                        <h3><a class="btn btn-primary btn-lg" href="/scrape"
+                        role="button">Scrape Latest News</a></h3>
+                        {% for news in cardio.news %}
+                        <h3>{{news.title}}</h3>
+                        <h4>{{news.paragraph}}</h4>
+                        {% endfor %}
+                      </div>  
                   </div>
               </div>
           </div>
-      </div>
+        </div>
 
-      
       <div class="col-md-7">
         <div id="bar"></div>
       </div>

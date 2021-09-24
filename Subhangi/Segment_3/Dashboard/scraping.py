@@ -12,15 +12,8 @@ def scrape_all():
     executable_path = {'executable_path': ChromeDriverManager().install()}
     browser = Browser('chrome', **executable_path, headless=False)
 
-    news_title, news_paragraph = cardio_news(browser)
-
     # Run all scraping functions and store results in dictionary
-    data = {
-        "news_title": news_title,
-        "news_paragraph": news_paragraph,
-        # "featured_image": featured_image,
-        "last_modified": dt.datetime.now()
-    }
+    data = {"news": cardio_news(browser)}
 
     # Stop webdriver and return data
     browser.quit()
@@ -42,38 +35,47 @@ def cardio_news(browser):
     # Add try/except for error handling
     try:
 
-        # Set the stage for scraping by finding the parent element
-        slide_elem = news_soup.select_one('div', class_='c-article-card__content')
+        # Set the stage for scraping by finding the parent elements for the articles
+        slide_elem = news_soup.find_all('div', class_='c-article-card__content')
 
-    # ---------------- Scrape the title----------------------
+    # ---------------- Obtain the titles and the corresponding paragraph texts----------------------
 
-        news_title = slide_elem.find('h4', class_='c-article-card__title').get_text()
+        # Define the list (of dictionaries) that will store the titles, and the associated paragraphs.
+        news_article =[]
+
+        # Create a loop to go to the first four articles
+        for i in range (4):
+
+            # Define the dictionary 
+            news = {}
+
+            # Retrieve the article title
+            title = slide_elem[i].find('h4', class_='c-article-card__title').get_text()
+            print(title)
+            print("hello title")
+
+            # Retrieve the paragraph text
+            paragraph = slide_elem[i].find('p', class_='c-article-card__excerpt').get_text()
+            print(paragraph)
+            print("hellp para")
+
+            # Add to the dictionary news_article
+            news['title'] = title
+            news['paragraph'] = paragraph
+
+            # Append the news_article dictionary to the news_list
+            news_article.append(news)
+
         
-    # -----------------Scrape the paragraph------------------
-
-        # Use the parent element to find the paragraph text
-        news_p = slide_elem.find('p', class_='c-article-card__excerpt').get_text()
-    
-    # ---------------Scrape the correspoding image-----------
-
-    #     # Find the base url
-    #     img_url_rel = slide_elem.find('img').get('src')
-    
-    # # Use the base URL to create an absolute URL
-    #     img_url = f'https://www.heart.org{img_url_rel}'
-       
     except AttributeError:
-        return None, None, None
+        return None
+    print("hello world)")
+    print(news_article)
 
-    return news_title, news_p
+    return news_article
 
 
 if __name__ == "__main__":
     
     # If running as script, print scraped data
     print(scrape_all())
-
-
-
-
-
