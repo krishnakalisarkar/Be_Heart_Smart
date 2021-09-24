@@ -218,7 +218,7 @@ function buildCharts(sample) {
       type: "scatter",
       mode: 'markers',
       marker: {
-      size: 20,
+      size: 30,
       sizemode: "area",
       color: colorscale,
       
@@ -234,10 +234,10 @@ function buildCharts(sample) {
       paper_bgcolor: "antiquewhite",
       font: { color: "rgb(136, 2, 2)", family: "Arial",size: 14 },
       margin: {
-        l: 20,
-        r: 20,
-        b: 50,
-        t: 50,
+        l: 40,
+        r: 40,
+        b: 100,
+        t: 100,
         pad: 4
       },
   };
