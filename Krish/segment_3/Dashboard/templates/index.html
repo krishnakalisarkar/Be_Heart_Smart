@@ -62,20 +62,20 @@
           </div>
         </div> -->
 
-      <div class="col-md-6">
+      <div class="col-md-5">
         <div id="bar"></div>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-5">
         <div id="gauge"></div>
       </div>
       <!-- Cardiac Health News -->
-        <div class="row" id="cardio-news">
+        <div class="row" id="cardio-news" style = "font-family: Arial">
           <div class="col-md-12">
               <div class="media">
-                  <div class="media-body">
+                  <div class="media-body" style = "font-family: Arial">
                       <h2>Latest News About Cardiac Health</h2>
                       <div class="container" style="background-color: antiquewhite; border: 2px solid rgb(136, 2, 2) ">
-                        <h3><a class="btn btn-primary btn-lg" href="/scrape"
+                        <h3><a class="btn btn-primary btn-lg" style = "background-color:rgb(136, 2, 2); font-family: Arial" href="/scrape"
                         role="button">Scrape Latest News</a></h3>
                         {% for news in cardio.news %}
                         <h3>{{news.title}}</h3>

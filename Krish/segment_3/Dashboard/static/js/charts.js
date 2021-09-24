@@ -161,7 +161,6 @@ function buildCharts(sample) {
 //****************************************************************/
 // Creating the layout for the gauge chart.
   var gaugeLayout = { 
-
   font: { color: "rgb(136, 2, 2)", family: "Arial", size: 14},
   paper_bgcolor: "antiquewhite",
   automargin: true,
@@ -172,8 +171,8 @@ function buildCharts(sample) {
     r: 25,
     b: 25,
     t: 25,
-  
-}};
+}
+};
 
     // Using Plotly to plot the gauge data and layout.
     Plotly.newPlot("gauge", gaugeData, gaugeLayout);
