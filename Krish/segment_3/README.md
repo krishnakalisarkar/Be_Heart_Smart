@@ -1,6 +1,6 @@
 ## Dashboard: Be Heart Smart 
 
-[❤ CLICK ME]( https://krishnakalisarkar.github.io/Be_Heart_Smart/).
+[❤ CLICK ME]( https://krishnakalisarkar.github.io/Be_Heart_Smart/)
 
 * The dashboard called "Be Heart Smart"is slowly taking shape using javascript.
 * A web scrapping using Flask and Mongo Db, from the American Heart Association shows the four latest articles on healthy living and food habits that might prevent the onset of heart disease.
