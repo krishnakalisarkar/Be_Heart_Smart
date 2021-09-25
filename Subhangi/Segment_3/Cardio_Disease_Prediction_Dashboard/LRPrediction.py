@@ -94,73 +94,77 @@ classifier.fit(X_scaled, y)
 # cholesterol_high = 0
 # active = 1
 
-# Obtaining the health numbers from the user.
-u_age = float(input("Enter age (in years): "))
-u_height = float(input("Enter height (in cm) : "))
-u_weight = float(input("Enter weight (in lbs): "))
-u_sys = float(input("Enter systolic (top) blood pressure : "))
-u_dias = float(input("Enter diastolic (bottom) blood pressure : "))
-u_cholesterol = input("Do you have high cholesterol i.e. greater than 240 mg/dL (Y/N) ?: ")
-u_active = input("Do you lead an active lifestyle (Y/N?")
+def predict():
 
-# Define function for calculating BMI, and assigning values to underweight, and is_obese
-def bmi_calc(u_weight,u_height):
-    height_in_m = u_height/100.0
-    weight_in_kg = u_weight * 0.454
-    bmi = round((weight_in_kg/height_in_m**2),1)
-    if bmi <= 18.5:
-        underweight = 1
-        is_obese = 0
-    elif bmi >= 30:
-        underweight = 0
-        is_obese = 1
-    else:
-        underweight = 0
-        is_obese = 0
+    # Obtaining the health numbers from the user.
+    u_age = float(input("Enter age (in years): "))
+    u_height = float(input("Enter height (in cm) : "))
+    u_weight = float(input("Enter weight (in lbs): "))
+    u_sys = float(input("Enter systolic (top) blood pressure : "))
+    u_dias = float(input("Enter diastolic (bottom) blood pressure : "))
+    u_cholesterol = input("Do you have high cholesterol i.e. greater than 240 mg/dL (Y/N) ?: ")
+    u_active = input("Do you lead an active lifestyle (Y/N?")
 
-    return underweight, is_obese   
+    # Define function for calculating BMI, and assigning values to underweight, and is_obese
+    def bmi_calc(u_weight,u_height):
+        height_in_m = u_height/100.0
+        weight_in_kg = u_weight * 0.454
+        bmi = round((weight_in_kg/height_in_m**2),1)
+        if bmi <= 18.5:
+            underweight = 1
+            is_obese = 0
+        elif bmi >= 30:
+            underweight = 0
+            is_obese = 1
+        else:
+            underweight = 0
+            is_obese = 0
 
-# Defining the variables required for the program
-age = u_age
-underweight , is_obese = bmi_calc(u_weight, u_height)
-systolic_bp = u_sys
-pulse_pressure = u_sys - u_dias
-cholesterol_high = 1 if u_cholesterol == 'Y' or u_cholesterol == 'y' else 0
-active = 1 if u_active == 'Y' or u_active == 'y' else 0
+        return underweight, is_obese   
 
-# Change the user input data into a DataFrame
-X_test_df= pd.DataFrame([[age, underweight, is_obese, systolic_bp, pulse_pressure, 
-                          cholesterol_high, active]], columns=["age", "underweight", "is_obese", "systolic_bp", 
+    # Defining the variables required for the program
+    age = u_age
+    underweight , is_obese = bmi_calc(u_weight, u_height)
+    systolic_bp = u_sys
+    pulse_pressure = u_sys - u_dias
+    cholesterol_high = 1 if u_cholesterol == 'Y' or u_cholesterol == 'y' else 0
+    active = 1 if u_active == 'Y' or u_active == 'y' else 0
+
+    # Change the user input data into a DataFrame
+    X_test_df= pd.DataFrame([[age, underweight, is_obese, systolic_bp, pulse_pressure, 
+                            cholesterol_high, active]], columns=["age", "underweight", "is_obese", "systolic_bp", 
                                                                   "pulse_pressure", "cholesterol_high", "active"])
 
-# Change the DataTypes of the user input data into floats
-X_test_df[["age", "underweight", "is_obese", "systolic_bp", 
-           "pulse_pressure", "cholesterol_high", "active"]] = X_test_df[["age", "underweight", "is_obese", "systolic_bp", 
-                                                                         "pulse_pressure", "cholesterol_high", 
-                                                                         "active"]].apply(pd.to_numeric, downcast="float")
+    # Change the DataTypes of the user input data into floats
+    X_test_df[["age", "underweight", "is_obese", "systolic_bp", 
+                "pulse_pressure", "cholesterol_high", "active"]] = X_test_df[["age", "underweight", "is_obese", "systolic_bp", 
+                                                                            "pulse_pressure", "cholesterol_high", 
+                                                                            "active"]].apply(pd.to_numeric, downcast="float")
 
 
-# Scale the user input test
-X_test_scaled = X_scaler.transform(X_test_df)
+    # Scale the user input test
+    X_test_scaled = X_scaler.transform(X_test_df)
 
-# Use the Logistic Regression model, with threshold set to 0.4, on the user input set.
-threshold = 0.4
+    # Use the Logistic Regression model, with threshold set to 0.4, on the user input set.
+    threshold = 0.4
 
-# Obtain the probability of having cardiovascular disease using the model
-preds_test = classifier.predict_proba(X_test_scaled)
-#preds_test = classifier.predict_proba(X_sample_scaled)
+    # Obtain the probability of having cardiovascular disease using the model
+    preds_test = classifier.predict_proba(X_test_scaled)
 
-# If probability is greater than the threshold, then cardiovascular disease exists, 
-# or else the user is negative for cardiovascular disease 
-if (preds_test[:,1] > threshold) :
-    prediction = "Positive for cardiovascular disease!"
-else :
-    prediction = "Negative for cardivascular disease!"
+    # If probability is greater than the threshold, then cardiovascular disease exists, 
+    # or else the user is negative for cardiovascular disease 
+    if (preds_test[:,1] > threshold) :
+        prediction = "Positive for cardiovascular disease!"
+    else :
+        prediction = "Negative for cardivascular disease!"
     
-# Give output of the prediction
-print(prediction)
+    # Give output of the prediction
+    return prediction
 
 
-
+if __name__ == "__main__":
+    
+    # If running as script, print scraped data
+    print(predict())
 
 
