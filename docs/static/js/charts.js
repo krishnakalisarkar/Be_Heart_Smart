@@ -164,8 +164,6 @@ function buildCharts(sample) {
   font: { color: "rgb(136, 2, 2)", family: "Arial", size: 14},
   paper_bgcolor: "antiquewhite",
   automargin: true,
-  width: 700,
-  height: 500,
   margin: {
     l: 25,
     r: 25,
