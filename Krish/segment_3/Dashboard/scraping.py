@@ -10,7 +10,7 @@ def scrape_all():
     # Initiate headless driver for deployment
     # Set up Splinter
     executable_path = {'executable_path': ChromeDriverManager().install()}
-    browser = Browser('chrome', **executable_path, headless=False)
+    browser = Browser('chrome', **executable_path, headless=True)
 
     # Run all scraping functions and store results in dictionary
     data = {"news": cardio_news(browser)}
