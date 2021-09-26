@@ -4,10 +4,112 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Predict Cardio Health</title>
+    <link 
+        rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../static/css/style.css">
 </head>
+
 <body>
-    <h1>Your Result</h1>
-    <h1>{{prediction}}</h1>
+    <div class="wrapper">
+        <nav class="navbar navbar-expand-lg">
+            <a class="navbar-brand" href="index.html">Health Numbers</a>
+        </nav>
+        <div class="jumbotron">
+            <h1>Do You Have A Heart Healthy ?</h1>
+        </div>
+
+        <!-- This is an introductory scetion -->
+
+        <div class="container-fluid">
+            <!-- <div class = "row"> -->
+                <!-- <div class="col-md-4"> -->
+                    <h3> What affects Heart Health ?
+                        <small><br>NIH's National Center for Complementary and Integrative Health has this to say</small></h3>
+                <!-- </div> -->
+                <!-- <div class="col-md-8"> -->
+                    <p>
+                        Cardiovascular Diseases (CVDs) are a class of diseases that affect he heart or the blood vessels. 
+                        In the United States, they are the leading cause of death. Coronary Artery  disease, in which blood vessels 
+                        that supply bloods to the heart become narrowed or blocked, is the most common type of CVD observed.
+                    <br> Several risk factors, such as age, hypertension (high blood pressure), cholesterol, have been associated
+                        to be directly linked with CVDs . Some of these may be controlled with lifestyles changes such as diet and 
+                        regular exercise.
+                    <br> Dietary supplements, like garlic or soy, have been observed to have beneficial effects on cholesterol. 
+                        Lifestyles changes such as incorporating meditation, yoga have also been observed to benefit blood pressure.
+                    </p>
+                <!-- </div> -->
+            <!-- </div> -->
+        </div>
+
+        <!-- Here we will have the Logistic Regression associated stuff -->
+
+        <div class="container-fluid"> 
+            <p>Please Enter the Following Health Numbers</p>
+            
+                <div class = "row">
+
+                <!-- Here we will have user inputs and predictions -->
+                <div class ="col-md-2">
+                    <form name="passdata" action="#" method="post">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <label for="age">Age (in years)</label>
+                                <input type="text" placeholder="41" id="age" name="age"/>
+                            </li> 
+                            <li class="list-group-item"> 
+                                <label for="height">Height (in cm)</label>
+                                <input type="text" placeholder="165" id="height" name="height"/>
+                            </li>
+                            <!-- <li>
+                                <input type="submit" value="submit"/>
+                            </li> -->
+                            <li class="list-group-item">
+                                <label for="weight">Weight (in lbs)</label>
+                                <input type="text" placeholder="150" id="weight" name="weight"/>
+                            </li>
+                            <li class="list-group-item">
+                                <label for="systolic">Systolic BP (higher number)</label>
+                                <input type="text" placeholder="120" id="systolic" name="systolic"/>
+                            </li>
+                            <li class="list-group-item">
+                                <label for="diastolic">Diastolic BP (lower number)</label>
+                                <input type="text" placeholder="80" id="diastolic" name="diastolic"/>
+                            </li>
+                            <li class="list-group-item">
+                                <label for="cholesterol">High Cholesterol (Y/N)</label>
+                                <input type="text" placeholder="N" id="cholesterol" name="cholesterol"/>
+                            </li>
+                            <li class="list-group-item">
+                                <label for="active">Active Lifestyle (Y/N)</label>
+                                <input type="text" placeholder="Y" id="active" name="active"/>
+                            </li>
+                            <li>
+                                <input type="submit" value="submit"/>
+                            </li>
+                            <h2>Your Result</h2>
+                            <h2>{{prediction}}</h2>
+                        </ul>
+                    </form>
+                </div>
+
+                <!-- Here we will have the prediction vs recall charts
+                <div class="col-md-12">
+                    <h2>Your Result</h2>
+                    <h2>{{prediction}}</h2>
+                </div> -->
+
+                </div>
+            
+        </div>
+
+    </div>
+    
+    <!-- <h1>Your Result</h1>
+    <h1>{{prediction}}</h1> -->
 </body>
 </html>

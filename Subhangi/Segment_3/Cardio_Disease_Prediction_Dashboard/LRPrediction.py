@@ -94,17 +94,26 @@ classifier.fit(X_scaled, y)
 # cholesterol_high = 0
 # active = 1
 
-def predict():
+def predict(numbers):
 
     # Obtaining the health numbers from the user.
-    u_age = float(input("Enter age (in years): "))
-    u_height = float(input("Enter height (in cm) : "))
-    u_weight = float(input("Enter weight (in lbs): "))
-    u_sys = float(input("Enter systolic (top) blood pressure : "))
-    u_dias = float(input("Enter diastolic (bottom) blood pressure : "))
-    u_cholesterol = input("Do you have high cholesterol i.e. greater than 240 mg/dL (Y/N) ?: ")
-    u_active = input("Do you lead an active lifestyle (Y/N?")
+    # u_age = float(input("Enter age (in years): "))
+    # u_height = float(input("Enter height (in cm) : "))
+    # u_weight = float(input("Enter weight (in lbs): "))
+    # u_sys = float(input("Enter systolic (top) blood pressure : "))
+    # u_dias = float(input("Enter diastolic (bottom) blood pressure : "))
+    # u_cholesterol = input("Do you have high cholesterol i.e. greater than 240 mg/dL (Y/N) ?: ")
+    # u_active = input("Do you lead an active lifestyle (Y/N?")
 
+    u_age = float(numbers["u_age"])
+    u_height = float(numbers["u_height"])
+    u_weight = float(numbers["u_weight"])
+    u_sys = float(numbers["u_systolic_bp"])
+    u_dias = float(numbers["u_diastolic_bp"])
+    u_cholesterol = numbers["u_cholesterol"]
+    u_active = numbers["u_active"]
+
+    
     # Define function for calculating BMI, and assigning values to underweight, and is_obese
     def bmi_calc(u_weight,u_height):
         height_in_m = u_height/100.0
@@ -158,6 +167,9 @@ def predict():
     else :
         prediction = "Negative for cardivascular disease!"
     
+    
+    
+    
     # Give output of the prediction
     return prediction
 
@@ -168,3 +180,4 @@ if __name__ == "__main__":
     print(predict())
 
 
+ 
