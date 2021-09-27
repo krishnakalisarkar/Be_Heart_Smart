@@ -409,18 +409,18 @@ A better way to improve the recall without losing out on the accuracy or the har
 * The roc_auc and accuracy scores were very similar across the 10 folds indicating that the model was not overfit.
 * The roc_auc of the 10 folds are as follows:
 
-----------roc_auc of 10 folds here---------
+![Roc_auc_initial](Pictures_4/Segment_4/roc_auc_initial.png)
 
 * The mean roc_auc score of the 10 folds is: 
 
------mean roc_auc here-----
+![Roc_auc_initial_mean](Pictures_4/Segment_4/mean_roc_auc_initial.png)
 
 #### Feature Selection with feature_importances
 
 * To check for important features we split that data into train and test sets using sklearn's train_test_split. We set 20% of our trainvalid set (this consists of the training and validation set of the model) as a test set and 80% of it as a training set.
 * We standardize the data with StandardScaler and use the scaled data to get the feature_importances.
 
-----------feature importances chart about here--------
+![Feature Importances](Pictures_4/Segment_4/new_feature_importances.png)
 
 
 * From feature importances we can see that BMI is the most important feature affecting the performance of our Random Forest model. The top 4 most relevant features in predicting the outcome of cardiovascular disease are bmi, age, systolic_bp and pulse_pressure respectively.
@@ -430,31 +430,31 @@ A better way to improve the recall without losing out on the accuracy or the har
 * We retrain our model on the scaled dataset and predict it on the validation set to obtain the accuracy score, confusion matrix and the classification report. We also get the roc_auc score.
 * The accuracy and roc_auc scores, the confusion matrix and classification report for our model are shown below:
 
-------cr, cm and accuracy scores here--------
+![Roc_auc_score on the validation set](Pictures_4/Segment_4/roc_auc_valid.png)
+![Confusion Matrix on the validation set](Pictures_4/Segment_4/cm_valid.png)
+![Classification Report on the validation set](Pictures_4/Segment_4/cr_valid.png)
 
 
 
-* Even though the mean roc_auc score of our RF model onnthe validation set is 0.75, the accuracy score is much lower, 0.69. We perform hypertuning to find the best model.
+* Even though the mean roc_auc score of our RF model on the validation set is 0.75, the accuracy score is much lower, 0.69. We perform hypertuning to find the best model.
 * We search for the best parameters using scikit_learn's GridSearchCV function. We use 5-fold cross-validation for this stage because it was computationally very time consuming with the 10-fold. Also, we had to limit the parameters we wanted to pass in our GridSearchCV function because it became computationally impossible to complete the process with our resources.
 * The best parameters with the grid search are displayed below:
 
-----best params table here-----
+![Grid Search Best Parameters](Pictures_4/Segment_4/best_params_df.png)
+
 
 * Based on the results of the grid search we plug in the best parameters and recreate our random classifier model.
 * We retrain our model with the new hyperparameters.
 * We predict the new model on our test set and our accuracy score, confusion matrix and classification report are displayed below.
 
-
-----![Confusion Matrix Tuned]---here
-
-------![Classification Report Tuned] here-----
-
+![Confusion Matrix on the validation set](Pictures_4/Segment_4/cm_tuned.png)
+![Classification Report on the validation set](Pictures_4/Segment_4/cr_tuned.png)
 
 * We obtain our roc_auc scores and the mean score for the new model.
 
-----![ROC-AUC Score of the 10 folds Tuned] here------
+![Final Roc_auc_score of the 10 fold](Pictures_4/Segment_4/roc_auc_tuned.png)
 
------![Mean ROC-AUC Score Tuned] here------
+![Final Mean Roc_auc_score ](Pictures_4/Segment_4/mean_roc_auc_tuned.png)
 
 #### Takeaway from Random Forest Classification Model
 
@@ -525,16 +525,14 @@ nn.compile(loss="binary_crossentropy", optimizer ="rmsprop", metrics=["accuracy"
 
 ## Dashboard
 
-[❤ CLICK ME](http://127.0.0.1:5501/index.html).
+[❤ CLICK ME]( https://krishnakalisarkar.github.io/Be_Heart_Smart/)
 
-* The dashboard is slowly taking shape.
-* The dashboard is made interactive
-	- If the patient’s ID is selected , the demographic info of that patient shows in the demographic info column.
-	- If the patient’s ID is selected , the demographic info of that patient shows in the demographic info column.
-	- An option for user input will be created to take in health measures such as height, weight, BP etc. Based on the number, the users' chance of having cardiovascular disease will be calculated. 
-	- The gauge indicator will show if the user is cardio_positive (1) or cardio_negative (0).
-	- At this time, the gauge indicator will show if the patient (based on ID chosen) is at a risk of developing a heart disease.0 shows not at risk and 1 shows is at risk.
+* The dashboard called "Be Heart Smart", it is done with javascript.
+* The dashboard is made interactive.
+* If the patient’s ID is selected , the demographic informations of that patient shows in the demographic info column.
+* The gauge indicator shows if that patient has heart disease or not.0 shows does not have any cardiac disease and 1 shows the person has cardiac disease.
 * The horizontal bar graph shows the primary factors that are responsible for developing a heart disease.
+* The bubble chart shows the different behavioral factors that might contribute towards developing a heart disease.
 
 * In addition to the javascript dashboard an interactive Tableau Dashboard was created.
 
