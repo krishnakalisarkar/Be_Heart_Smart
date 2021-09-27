@@ -1,0 +1,47 @@
+.container {
+        background: rgb(243, 245, 239);
+}
+
+.jumbotron {
+    background-image: url("../images/Autumn_Trees.jpg");
+    background-size: 100% 100%;
+    
+  }
+
+.jumbotron h1{
+    font-weight: 800;
+    color: rgb(163, 3, 3);
+}
+.jumbotron h2{
+    font-weight: 800;
+    color: rgb(163, 3, 3);
+    
+}
+
+#intro {
+    border: seagreen;
+    border-style: solid;
+}
+
+#ml{
+    text-align: center;
+}
+
+#designer {
+    text-align: right;
+}
+
+#metrics {
+    font-weight: bold;
+    text-align: center;
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+
+input {
+    width: 95%
+}
