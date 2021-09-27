@@ -16,66 +16,61 @@
 
 <body>
     <div class="container">
-        <nav class="navbar navbar-expand-lg">
+        <!-- <nav class="navbar navbar-expand-lg">
             <a class="navbar-brand" href="index.html">Refresh</a>
-        </nav>
-        <div class="jumbotron">
-            <h1 class="display-4">Do You Have A Healthy Heart?</h1>
-            <h2>Let us Be-Heart_Smart</h2>
-            <h4 id="designer">By Subhangi Ghosh</h3>
+        </nav> -->
+        <div class="col-md-12 jumbotron text-center">
+            <h1>Do You Have A Healthy Heart?</h1>
+            <h2>Let us Be-Heart-Smart</h2>
+            <!-- <h4 id="designer">By Subhangi Ghosh</h4> -->
         </div>
 
-        <!-- This is an introductory scetion -->
-
-        <!-- <div class="container"> -->
-            <div class = "row">
-                <div class="col-md-4">
-                    <h3 id="title"> What affects Heart Health?
-                        <br>
-                        <small><br>NIH's National Center for Complementary and Integrative Health has this to say :</small></h3>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                        Cardiovascular Diseases (CVDs) are a class of diseases that affect he heart or the blood vessels. 
-                        In the United States, they are the leading cause of death. Coronary Artery  disease, in which blood vessels 
-                        that supply bloods to the heart become narrowed or blocked, is the most common type of CVD observed.
-                    <br> Several risk factors, such as age, hypertension (high blood pressure), cholesterol, have been associated
-                        to be directly linked with CVDs . Some of these may be controlled with lifestyles changes such as diet and 
-                        regular exercise.
-                    <br> Dietary supplements, like garlic or soy, have been observed to have beneficial effects on cholesterol. 
-                        Lifestyles changes such as incorporating meditation, yoga have also been observed to benefit blood pressure.
-                    <br> More information can be found at 
-                    <a href="https://www.nhlbi.nih.gov/health-topics/coronary-heart-disease" target="_blank">NIH link</a>
-                    </p>
-                </div>
+        <!-- This is an introductory section -->
+        <div class = "row" id="intro">
+            <div class="col-md-4">
+                <h3> What affects Heart Health?
+                    <br>
+                    <small><br>NIH's National Center for Complementary and Integrative Health has this to say :</small></h3>
             </div>
-        <!-- </div> -->
-
+            <div class="col-md-8">
+                <p style="font-size: 20px;">
+                    Cardiovascular Diseases (CVDs), a class of diseases that affect the heart or the blood vessels, 
+                    are the leading cause of death in the United States. The most common type of CVD is the Coronary Artery  disease, 
+                    in which blood vessels that supply bloods to the heart become narrowed or blocked.
+                <br> Several risk factors, such as age, hypertension, cholesterol, have been associated with CVDs . 
+                    Some of these may be minimizes with diet and regular exercise.
+                    Dietary supplements, like garlic or soy, have been observed to have beneficial effects on cholesterol. 
+                    Lifestyles changes such as incorporating meditation, yoga have also been observed to benefit blood pressure.
+                <br> More information can be found at 
+                <a href="https://www.nhlbi.nih.gov/health-topics/coronary-heart-disease" target="_blank">NIH link</a>
+                </p>
+            </div>
+        </div>
+        
+            
         <!-- Here we will have the Logistic Regression associated stuff -->
+        <!-- Details about the model used -->
         <div class="row">
             <div class="col-md-12">
-                <h4>A Logistic Regression model is used here to predict if you have cardio vascular disease. The model was trained on a dataset that was obtained from Kaggle
-                    (<a href="">Dataset origin</a>), after cleaning, processing, and feature engineering. The following metric define the model used here,</h4>
-                <h4 id="metrics"></h4>Accuracy : 70%,          Precision : 70%,             Recall : 80%,            F1 score : 73% </h4>
-                <h4> The graphs below show the adjustment of threshold for optimized recall without compromising precision.
+                <p style="font-size: 20px;">A Logistic Regression model is used here to predict if you have cardio vascular disease. The model was trained on a dataset that was obtained from Kaggle
+                    (<a href="https://www.kaggle.com/sulianova/cardiovascular-disease-dataset" target="_blank">Dataset origin</a>), 
+                    after cleaning, processing, and feature engineering. The following metric define the model used here,</p>
+                <h4 id="metrics">Accuracy : 70%,          Precision : 70%,             Recall : 80%,            F1 score : 73% </h4>
+                <p style="font-size: 20px;"> The graphs below show the adjustment of threshold for optimized recall without compromising precision.</p>
             </div>
         </div>
 
-        <div class="row">
-            <p>Please enter the following numbers</p>
+        <div class="row" style="border:seagreen; border-top-style:solid; border-left-style:solid; border-right-style:solid;">
+            <p>Please enter the following numbers</p> 
         </div>
 
-        <!-- <div class="row" id="prediction">
-            <h2>Your Result: {{prediction}}</h2>
-        </div> -->
-
-        <!-- <div class="container-fluid">  -->
-            <!-- <p>Please Enter the Following Health Numbers</p> -->
-                <div class = "row">
+       
+            <div class="top" style="padding-bottom: auto;">
+                <div class = "row" style="border:seagreen; border-bottom-style:solid; border-left-style:solid; border-right-style:solid;">
 
                     <!-- Here we will have user inputs and predictions -->
                     <div class ="col-md-4" id="user-input">
-                        <!-- <p>Please Enter the Following Health Numbers</p> -->
+                        
                         <form name="passdata" action="#" method="post">
                             <ul class="list-group">
                                 <li class="list-group-item">
@@ -111,55 +106,62 @@
                                 </li>
                             </ul>
                         </form>
-                    <!-- <h2>Your Result</h2>
-                    <h2>{{prediction}}</h2> -->
                     </div>
 
-                    <!-- <div class="col-md-3">
-                        <h2>Your Result :</h2> -->
-                        <!-- <h2>{{prediction}}</h2>
-                    </div>
-                    <div class="col-md-7" id="prediction">
-                        <h2>Your Result :</h2>
-                        <h2>{{prediction}}</h2>
-                    </div> -->
+                    <!-- <div class=row id="prediction"> -->
+                        <div class="col-md-8" id="prediction">
+                            <h2 style="text-align: center;">Your Result</h2>
+                            <h1 style="text-align: center; color: seagreen; font-weight: bold;">{{prediction}}</h1>
+                        </div>
+                    
 
                     
-                    <div class="col-md-4">
-                        <img 
-                        src= "../static/images/Precision_Recall_vs_Threshold.png"
-                        class="img-responsive"
-                        alt="Responsive image"
-                        />
-                    </div>
-                    <div class="col-md-4">
-                        <img 
-                        src= "../static/images/Precision_vs_Recall.png"
-                        class="img-responsive"
-                        alt="Responsive image"
-                        />
-                    </div>
+                        
+                            <!-- <div class="col-md-4">
+                                <img 
+                                src= "../static/images/Precision_Recall_vs_Threshold.png"
+                                class="img-fluid"
+                                alt="Responsive image"
+                                />
+                            </div>
+                            <div class="col-md-4">
+                                <img 
+                                src= "../static/images/Precision_vs_Recall.png"
+                                class="img-fluid"
+                                alt="Responsive image"
+                                />
+                            </div> -->
+                        
+
+                        <!-- <div class=row id="prediction">
+                            <div class="col-md-8">
+                                <h2>Your Result: {{prediction}}</h2>
+                            </div>
+                        </div> -->
+
+                    
                 
-                    <!-- <div class="col-md-6">
-                        <h2 id="ml">Logistic Regression</h2>
-                        <p>Recall was optimized in this model. The following metrics were obtained:
-                            <br>Accuracy: 70%
-                            <br>Precision: 70%
-                            <br>Recall: 80%
-                            <br>F1 score: 73%
-                            <br>
-                            <br> The graph on the left shows adjustment of threshold for optimized recall without compromising precision.
-                        </p>
-                    </div> -->
-                </div>
-                <div class=row id="prediction">
-                    <h2>Your Result: {{prediction}}</h2>
+                    
                 </div>
 
-                <div class=row>
+                
+                <!-- <div class=row id="prediction">
+                    <div class="col-md-8">
+                        <h2>Your Result: {{prediction}}</h2>
+                    </div>
+                </div> -->
+
+            </div>
+
+                <!-- <div class=row id="prediction">
+                    <h2>Your Result: {{prediction}}</h2>
+                </div> -->
+
+            <div class="bottom" style="padding-top: auto;">
+                <div class=row style="border:seagreen; border-top-style:solid; border-left-style:solid; border-right-style:solid;">
                     <div class="col-md-12">
-                        <h2 id="insights">Insights from data and results</h2>
-                        <p>The graphs at the right are a glimpse into the insights gained by exploring the dataset, and from the machine learning outcomes.
+                        <h2 style="text-align:center">Insights from data and results</h2>
+                        <p id="insights" style="font-size:20px;">The graphs at the right are a glimpse into the insights gained by exploring the dataset, and from the machine learning outcomes.
                         Age and blood pressure heavily influence the probability of developing cardiac diseases.
                         Cholesterol tends to increase with age, and patients with cardiac diseases, in general, have higher total cholesterol compared to those without CVDs
                         <br> For more insights, please visit the interactive Tableau dashboard :
@@ -170,52 +172,40 @@
                     </div>
                 </div>
 
-                <div class="row">
+            
+                <div class=row style="border:seagreen; border-left-style:solid; border-right-style:solid;" >
                     <div class="col-md-6">
                         <img 
                         src= "../static/images/Cardio_Cleaned_Density_Age.png"
-                        class="img-responsive"
+                        class="img-fluid"
                         alt="Responsive image"
                         >
                     </div>
                     <div class="col-md-6">
                         <img 
                         src= "../static/images/Cardio_Cleaned_BoxPlot_Age_Cholesterol.png"
-                        class="img-responsive"
+                        class="img-fluid"
                         alt="Responsive image"
                         />
                     </div>
                 </div>
-                <div class=row>
+                <div class=row style="border:seagreen; border-bottom-style:solid; border-left-style:solid; border-right-style:solid;">
                     <div class="col-md-6">
                         <img 
                         src= "../static/images/Cardio_Cleaned_Final_BoxPlot_Systolic_Cardio.png"
-                        class="img-responsive"
+                        class="img-fluid"
                         alt="Responsive image"
                         />
                     </div>
                     <div class="col-md-6">
                         <img src= "../static/images/Cardio_Cleaned_Final_BoxPlot_Diastolic_Cardio.png"
-                        class="img-responsive"
+                        class="img-fluid"
                         alt="Responsive image"
                         />
                     </div>
                 </div>
+            </div>
                     
-                <!-- Here we will have the prediction vs recall charts
-                <div class="col-md-12">
-                    <h2>Your Result</h2>
-                    <h2>{{prediction}}</h2>
-                </div> -->
-
-                <!-- </div> -->
-
-                            
-        <!-- </div> -->
-
     </div>
-    
-    <!-- <h1>Your Result</h1>
-    <h1>{{prediction}}</h1> -->
 </body>
 </html>

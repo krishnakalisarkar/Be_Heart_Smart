@@ -1,24 +1,26 @@
-body {
-    color: #181515;
-    background-color: rgb(185, 185, 185);
+.container {
+        background: rgb(243, 245, 239);
 }
 
 .jumbotron {
     background-image: url("../images/Autumn_Trees.jpg");
     background-size: 100% 100%;
-    text-align: center;
-    background-color: forestgreen;
-    background: rgb(212, 236, 212);
+    
   }
 
-#user-input {
-    border-color: forestgreen;
+.jumbotron h1{
+    font-weight: 800;
+    color: rgb(163, 3, 3);
+}
+.jumbotron h2{
+    font-weight: 800;
+    color: rgb(163, 3, 3);
+    
 }
 
-#prediction {
-    font-weight: bold;
-    color:forestgreen;
-    text-align: center;
+#intro {
+    border: seagreen;
+    border-style: solid;
 }
 
 #ml{
@@ -29,10 +31,17 @@ body {
     text-align: right;
 }
 
-#insights {
+#metrics {
+    font-weight: bold;
     text-align: center;
 }
 
-#metrics {
-    font-weight: bold;
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+
+input {
+    width: 95%
 }
