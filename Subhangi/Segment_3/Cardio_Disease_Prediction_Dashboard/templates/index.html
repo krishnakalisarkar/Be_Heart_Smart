@@ -15,23 +15,26 @@
 </head>
 
 <body>
-    <div class="wrapper">
+    <div class="container">
         <nav class="navbar navbar-expand-lg">
-            <a class="navbar-brand" href="index.html">Health Numbers</a>
+            <a class="navbar-brand" href="index.html">Refresh</a>
         </nav>
         <div class="jumbotron">
-            <h1>Do You Have A Heart Healthy ?</h1>
+            <h1 class="display-4">Do You Have A Healthy Heart?</h1>
+            <h2>Let us Be-Heart_Smart</h2>
+            <h4 id="designer">By Subhangi Ghosh</h3>
         </div>
 
         <!-- This is an introductory scetion -->
 
-        <div class="container-fluid">
-            <!-- <div class = "row"> -->
-                <!-- <div class="col-md-4"> -->
-                    <h3> What affects Heart Health ?
-                        <small><br>NIH's National Center for Complementary and Integrative Health has this to say</small></h3>
-                <!-- </div> -->
-                <!-- <div class="col-md-8"> -->
+        <!-- <div class="container"> -->
+            <div class = "row">
+                <div class="col-md-4">
+                    <h3 id="title"> What affects Heart Health?
+                        <br>
+                        <small><br>NIH's National Center for Complementary and Integrative Health has this to say :</small></h3>
+                </div>
+                <div class="col-md-8">
                     <p>
                         Cardiovascular Diseases (CVDs) are a class of diseases that affect he heart or the blood vessels. 
                         In the United States, they are the leading cause of death. Coronary Artery  disease, in which blood vessels 
@@ -41,71 +44,174 @@
                         regular exercise.
                     <br> Dietary supplements, like garlic or soy, have been observed to have beneficial effects on cholesterol. 
                         Lifestyles changes such as incorporating meditation, yoga have also been observed to benefit blood pressure.
+                    <br> More information can be found at 
+                    <a href="https://www.nhlbi.nih.gov/health-topics/coronary-heart-disease" target="_blank">NIH link</a>
                     </p>
-                <!-- </div> -->
-            <!-- </div> -->
-        </div>
+                </div>
+            </div>
+        <!-- </div> -->
 
         <!-- Here we will have the Logistic Regression associated stuff -->
+        <div class="row">
+            <div class="col-md-12">
+                <h4>A Logistic Regression model is used here to predict if you have cardio vascular disease. The model was trained on a dataset that was obtained from Kaggle
+                    (<a href="">Dataset origin</a>), after cleaning, processing, and feature engineering. The following metric define the model used here,</h4>
+                <h4 id="metrics"></h4>Accuracy : 70%,          Precision : 70%,             Recall : 80%,            F1 score : 73% </h4>
+                <h4> The graphs below show the adjustment of threshold for optimized recall without compromising precision.
+            </div>
+        </div>
 
-        <div class="container-fluid"> 
-            <p>Please Enter the Following Health Numbers</p>
-            
+        <div class="row">
+            <p>Please enter the following numbers</p>
+        </div>
+
+        <!-- <div class="row" id="prediction">
+            <h2>Your Result: {{prediction}}</h2>
+        </div> -->
+
+        <!-- <div class="container-fluid">  -->
+            <!-- <p>Please Enter the Following Health Numbers</p> -->
                 <div class = "row">
 
-                <!-- Here we will have user inputs and predictions -->
-                <div class ="col-md-2">
-                    <form name="passdata" action="#" method="post">
-                        <ul class="list-group">
-                            <li class="list-group-item">
-                                <label for="age">Age (in years)</label>
-                                <input type="text" placeholder="41" id="age" name="age"/>
-                            </li> 
-                            <li class="list-group-item"> 
-                                <label for="height">Height (in cm)</label>
-                                <input type="text" placeholder="165" id="height" name="height"/>
-                            </li>
-                            <!-- <li>
-                                <input type="submit" value="submit"/>
-                            </li> -->
-                            <li class="list-group-item">
-                                <label for="weight">Weight (in lbs)</label>
-                                <input type="text" placeholder="150" id="weight" name="weight"/>
-                            </li>
-                            <li class="list-group-item">
-                                <label for="systolic">Systolic BP (higher number)</label>
-                                <input type="text" placeholder="120" id="systolic" name="systolic"/>
-                            </li>
-                            <li class="list-group-item">
-                                <label for="diastolic">Diastolic BP (lower number)</label>
-                                <input type="text" placeholder="80" id="diastolic" name="diastolic"/>
-                            </li>
-                            <li class="list-group-item">
-                                <label for="cholesterol">High Cholesterol (Y/N)</label>
-                                <input type="text" placeholder="N" id="cholesterol" name="cholesterol"/>
-                            </li>
-                            <li class="list-group-item">
-                                <label for="active">Active Lifestyle (Y/N)</label>
-                                <input type="text" placeholder="Y" id="active" name="active"/>
-                            </li>
-                            <li>
-                                <input type="submit" value="submit"/>
-                            </li>
-                            <h2>Your Result</h2>
-                            <h2>{{prediction}}</h2>
-                        </ul>
-                    </form>
+                    <!-- Here we will have user inputs and predictions -->
+                    <div class ="col-md-4" id="user-input">
+                        <!-- <p>Please Enter the Following Health Numbers</p> -->
+                        <form name="passdata" action="#" method="post">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <label for="age">Age (in years)</label>
+                                    <input type="text" placeholder="41" id="age" name="age"/>
+                                </li> 
+                                <li class="list-group-item"> 
+                                    <label for="height">Height (in cm)</label>
+                                    <input type="text" placeholder="165" id="height" name="height"/>
+                                </li>
+                                <li class="list-group-item">
+                                    <label for="weight">Weight (in lbs)</label>
+                                    <input type="text" placeholder="150" id="weight" name="weight"/>
+                                </li>
+                                <li class="list-group-item">
+                                    <label for="systolic">Systolic BP (higher number)</label>
+                                    <input type="text" placeholder="120" id="systolic" name="systolic"/>
+                                </li>
+                                <li class="list-group-item">
+                                    <label for="diastolic">Diastolic BP (lower number)</label>
+                                    <input type="text" placeholder="80" id="diastolic" name="diastolic"/>
+                                </li>
+                                <li class="list-group-item">
+                                    <label for="cholesterol">High Cholesterol (Y/N)</label>
+                                    <input type="text" placeholder="N" id="cholesterol" name="cholesterol"/>
+                                </li>
+                                <li class="list-group-item">
+                                    <label for="active">Active Lifestyle (Y/N)</label>
+                                    <input type="text" placeholder="Y" id="active" name="active"/>
+                                </li>
+                                <li>
+                                    <input type="submit" value="submit"/>
+                                </li>
+                            </ul>
+                        </form>
+                    <!-- <h2>Your Result</h2>
+                    <h2>{{prediction}}</h2> -->
+                    </div>
+
+                    <!-- <div class="col-md-3">
+                        <h2>Your Result :</h2> -->
+                        <!-- <h2>{{prediction}}</h2>
+                    </div>
+                    <div class="col-md-7" id="prediction">
+                        <h2>Your Result :</h2>
+                        <h2>{{prediction}}</h2>
+                    </div> -->
+
+                    
+                    <div class="col-md-4">
+                        <img 
+                        src= "../static/images/Precision_Recall_vs_Threshold.png"
+                        class="img-responsive"
+                        alt="Responsive image"
+                        />
+                    </div>
+                    <div class="col-md-4">
+                        <img 
+                        src= "../static/images/Precision_vs_Recall.png"
+                        class="img-responsive"
+                        alt="Responsive image"
+                        />
+                    </div>
+                
+                    <!-- <div class="col-md-6">
+                        <h2 id="ml">Logistic Regression</h2>
+                        <p>Recall was optimized in this model. The following metrics were obtained:
+                            <br>Accuracy: 70%
+                            <br>Precision: 70%
+                            <br>Recall: 80%
+                            <br>F1 score: 73%
+                            <br>
+                            <br> The graph on the left shows adjustment of threshold for optimized recall without compromising precision.
+                        </p>
+                    </div> -->
+                </div>
+                <div class=row id="prediction">
+                    <h2>Your Result: {{prediction}}</h2>
                 </div>
 
+                <div class=row>
+                    <div class="col-md-12">
+                        <h2 id="insights">Insights from data and results</h2>
+                        <p>The graphs at the right are a glimpse into the insights gained by exploring the dataset, and from the machine learning outcomes.
+                        Age and blood pressure heavily influence the probability of developing cardiac diseases.
+                        Cholesterol tends to increase with age, and patients with cardiac diseases, in general, have higher total cholesterol compared to those without CVDs
+                        <br> For more insights, please visit the interactive Tableau dashboard :
+                        <a href="https://public.tableau.com/app/profile/ayse1055/viz/BeHeartSmart/BeHeartSmartStory?publish=yes" target="_blank">Be-Heart-Smart Tableau</a>
+                        <br> To explore the dataset, please visit the interactive HTML dashboard :
+                        <a href="https://krishnakalisarkar.github.io/Be_Heart_Smart/" target="_blank">Explore Be-Heart-Smart</a>
+                         </p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <img 
+                        src= "../static/images/Cardio_Cleaned_Density_Age.png"
+                        class="img-responsive"
+                        alt="Responsive image"
+                        >
+                    </div>
+                    <div class="col-md-6">
+                        <img 
+                        src= "../static/images/Cardio_Cleaned_BoxPlot_Age_Cholesterol.png"
+                        class="img-responsive"
+                        alt="Responsive image"
+                        />
+                    </div>
+                </div>
+                <div class=row>
+                    <div class="col-md-6">
+                        <img 
+                        src= "../static/images/Cardio_Cleaned_Final_BoxPlot_Systolic_Cardio.png"
+                        class="img-responsive"
+                        alt="Responsive image"
+                        />
+                    </div>
+                    <div class="col-md-6">
+                        <img src= "../static/images/Cardio_Cleaned_Final_BoxPlot_Diastolic_Cardio.png"
+                        class="img-responsive"
+                        alt="Responsive image"
+                        />
+                    </div>
+                </div>
+                    
                 <!-- Here we will have the prediction vs recall charts
                 <div class="col-md-12">
                     <h2>Your Result</h2>
                     <h2>{{prediction}}</h2>
                 </div> -->
 
-                </div>
-            
-        </div>
+                <!-- </div> -->
+
+                            
+        <!-- </div> -->
 
     </div>
     
