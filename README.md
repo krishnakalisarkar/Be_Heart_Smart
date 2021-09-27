@@ -8,20 +8,8 @@
 * Subhangi Ghosh
 * Krishnakali Sarkar
 
-### Communication Channels:
+[❤ CLICK ME TO GO TO THE PRESENTATION SLIDES](https://github.com/krishnakalisarkar/Be_Heart_Smart/blob/main/Presentation/Be_Heart_Smart_Presentation_Segment_2.pdf).
 
-* Slack: Channel with instructors for questions and clarifications. Private channel of team members, used for scheduling time, exchanging ideas, assigning tasks, and general support.
-
-* Zoom: Brainstorming sessions, finalizing action itmes.
-
-* Email: Another platform to collaborate with team members.
-    
-## Git Hub
-### Main Branch : Be Heart Smart ❤
-The main git hub repository namely " Be Heart Smart" is created.
-
-### Individual Branch:
-Each collaborator created their individual branch to commit their files.
 
 ## Topic
 Cardiovascular Disease: The purpose of this project is to predict the risk of cardiovascular disease based on existing health and lifestyle factors.
@@ -42,7 +30,7 @@ The effects of behavioral risk factors may show up in individuals as
 * overweight and 
 * obesity. 
 
-A healthy heart is central to overall good health. The purpose of this project is to spread awareness among individuals that embracing a healthy lifestyle at any age can prevent heart disease and lower the  risks for  heart attack or stroke.
+A healthy heart is central to overall good health. The purpose of this project is to spread awareness among individuals and that embracing a healthy lifestyle at any age can prevent heart disease and lower the  risks for  heart attack or stroke.
 
 
 ## Resources used
@@ -262,42 +250,35 @@ The final tables however were joined in the database in local PostgreSQL server,
 
 ### Questions expected to be answered with our Machine Learning model
 
-* Is a person at risk of heart disease?
-* What are the potential risk factors for heart disease--smoking, alcohol consumption, obesity, etc?
-* Which factors are the best predictors of heart disease?
+* Is a person at risk of cardiovascular disease?
+* What are the potential risk factors for cardiovascular disease--smoking, alcohol consumption, obesity, etc?
+* Which factors are the best predictors of cardiovascular disease?
 
 ### Machine learning models that was used in our analysis:
 
 * Our dataset is large with over 60 thousand observations and 11 features. 
-* Our aim is to predict presence of heart disease. Hence sensitivity/recall will play an important determinant in selecting our model.
-* We tried different machine learning algorithms to compare and determine the model that will predict presence of heart disease timely and accurately.
-* Our machine learning models were classification models since we have a target variable, and which is if the person has a heart disease or not. Hence, the two possible outcomes are: "Yes" or "No".
-* We employed supervised machine learning and artificial neural network algorithms for our analysis.
-* The supervised machine learning algorithms we used were : 
-1) Logistic regression,
-2) Random Forests, 
+* Our aim is to help predict presence of cardiovascular disease  timely and accurately.
+* We try different machine learning algorithms to compare and determine the model that will best predict the presence of cardiovascular disease.
+* Our machine learning models were classification models since we have a target variable that describes if the person has a heart disease or not. Hence, the two possible outcomes are: "Yes" or "No". Therefore, we employ supervised machine learning algorithms for our analysis.
+* The machine learning algorithms we used are : 
+1) Logistic Regression,
+2) Random Forests,
+3) Deep Neural Networks 
 
-*  We also used deep neural network models. 
 
 ### Reasons:
 
 * These are suitable for interpreting large, complex data and non-linear relationships.
 * They also allows optimizing the model and produce high accuracy results.
 
-### Logistic Regression
 
-Logistic Regression is one of the machine learning algorithms 
-model used here to predict the outcome of cardiovascular disease based upon the given features.\
-Logistic Regression is an ideal algorithm for binary classification problems.\
-Various steps were performed leading to, and during logistic regression.
-
-#### EDA on the Cleaned Data
+### EDA on the Cleaned Data
 
 Data was loaded from PostgreSQL database Be_Heart_Smart, using sqlAlchemy to create a connection between the database and the jupyter notebook file, into a DataFrame cardio_cleaned_df. EDA was performed on the cleaned data, and the following insights were gained. (The various graphs and figures will be found in the folder Pictures/Segment_2/Images_Subhangi.) 
 
 * A density plot of age showed substantial overlap for cardio_disease positive (cardio_positive) and cardio_disease negative (cardio_negative) individuals. However the shift in peaks of the distribution indicates that for advanced age (over 55years), chances of developing cardiovascular disease increases.
 * A density plot of weight showerd substantial overlap for cardio_positive cardio_negative individuals with a marginal shift of cardio_positive towards higher weight.
-* Box plot of age distribution across different cholesterol levels shows increasing cholesterol levels with age. Cardio_positive individuals were older compared to cardio_negative (as also observed in the density plaot for age). The difference in age was greatest for normal cholesterol levels.
+* Box plot of age distribution across different cholesterol levels shows increasing cholesterol levels with age. Cardio_positive individuals were older compared to cardio_negative (as also observed in the density plot for age). The difference in age was greatest for normal cholesterol levels.
 * Box plot of weight distribution across different cholesterol levels do not show much variation across different cholesterol levels. However cardio_positive individuals were heavier compared to cardio_negative accross all cholesterol levels. A large number of outliers were also seen.
 * Box-plot of age accross different glucose levels also showed a slight shift towards higher age as glucose levels increased.
 * Box plot of weight across different glucose levels also show a lot of outliers. Individuals with moderate and high glucose levels were heavier compared to individuals with normal glucose levels.
@@ -305,7 +286,7 @@ Data was loaded from PostgreSQL database Be_Heart_Smart, using sqlAlchemy to cre
 * A very visible shift towards higher numbers were observed in blood pressure (for both diastolic and systolic) in cardio_positive individuals.
 * Blood pressure was also shown to be increasing with age for cardio_negative individuals, whereas it remained steady at a higher number in cardio_positive individuals.
 
-#### Feature Engineering
+### Feature Engineering
 
 Feature engineering was performed at different stages.
 * Height and weight information were combined into a new feature called "BMI" in order to tie up the two independent variable into one. Information from the CDC website was used to obtain the relationship to calculate BMI.
@@ -314,13 +295,13 @@ Feature engineering was performed at different stages.
 	- weight_status was created as finer classification of BMI. This was done to provide options to run machine learning algorithms with different demarcation for the same information. Weight status was assigned according to the CDC.gov website, as follows: underweight (BMI<=18.5) , normal (18.5<BMI<25), overweight (25<=BMI<30), and obese (BMI>=30).
 * A new feature called "pulse_pressure" was created that measured  the difference between systolic and diastolic blood pressure for each observation.
 
-#### Table Joining in the Database
+### Table Joining in the Database
 
 * A new DataFrame called BMI_df was created with the columns BMI, weight_status, obesity_status. This was extracted into final_BMI.csv, and loaded into the PostgreSQL Be_heart_Smart database as a new table called final_bmi_status.
 * The tables final_cardio_cleaned and final_bmi_status were joined in SQL into a new table final_cardio_combined.
 * A generalized schema of the tables is shown in the database section here. The specific code for joining and pictures will be found in the folder Pictures/Segment_2/Images_Subhangi.)
 
-#### Data Processing
+### Data Processing
 
 The table final_cardio_combined was reloaded from PostgreSQL Be-Heart_Smart into a pandas DataFrame cardio_df. Numerical values were generated for weight_status and obesity_status, and other categorical variables were converted into indicator variables using get_dummies. The first column was dropped to reduce redundancy. The column names were changed and the columns rearranged into a meaningful order.\
 Few more observations were eleminated on the following conditions,
@@ -338,10 +319,18 @@ A correlation matrix showed the relationship between the variables. We notice co
 	- cholesterol_high and glucose_high
 	- smoker and alcohol_intake (small)
 
+
+### Logistic Regression
+
+Logistic Regression is one of the machine learning algorithms 
+model used here to predict the outcome of cardiovascular disease based upon the given features.\
+Logistic Regression is an ideal algorithm for binary classification problems.\
+Various steps were performed leading to, and during logistic regression.
+
 #### Data Preparation for Initial Modeling
 
 * "tbl_id" was dropped.
-* Varibles were divided into Target, which inculded "cardio_disease", and Features, which included the remaining variables.
+* Variables were divided into Target, which included "cardio_disease", and Features, which included the remaining variables.
 * The data points were then split into three sets as Train, Validate, and Test in the ratio 60:20:20.
 * Data was scaled using the standard scaler.The model was fit on the scaled training set, and then was used to tranform the scaled training, and testing set.
 
@@ -397,73 +386,84 @@ The takeaway from the above exercise was that the nature of the dataset was such
 A better way to improve the recall without losing out on the accuracy or the harmonic mean was to instead hypertune the model by lowering the threshold from it's default of 0.5 to 0.4 to positively predict cardiac disease.
 
 
-### Random Forest Model
+### Random Forest Classification Model
 
-#### Feature engineering and preprocessing
+#### Data Preparation for Initial Modeling
 
-* Height and weight alone may not be very meaningful predictors of cardiovascular disease while a combination of these variables may be a better determinant.
-* Hence, we create 3 new variables using weight and height variables: bmi, weight_status (underweight, normal,overweight, obese) and obesity_status (yes/no).
+* tbl_id column was dropped as it is redundant for the purpose of our analysis.
 * We investigate the correlation between the variables using correlation table. 
-* When we look at the correlation table we notice that weight_status_obese and obesity_status_yes variables are highly correlated (almost 0.90). This is expected as these two variables describe the same thing and calculated using the same variables.
+* When we look at the correlation table we notice that obese and is_obese variables are highly correlated (almost 0.90). This is expected as these two variables describe the same thing and calculated using the same variables.
 * weight and bmi are also highly correlated (0.87 ) since bmi is calculated using the weight variable.
 * Hence, keeping all these variable that are dependent on each other is redundant and will adversely affect our model's interpretability.
 * Since BMI has all the information that weight and height variables have we drop these columns.
-* Similarly, we drop the weight_status_obese column.
+* Similarly, we drop the is_obese column since obese column already carries the same informaion.
+* Variables were divided into Target, which included "cardio_disease", and Features, which included the remaining variables.
+* The data points were then split into three sets as Training, Validation, and Testing in the ratio 70:20:10.
+* Data was scaled using the standard scaler.The model was fit on the scaled training set, and then was used to tranform the scaled training, and testing set.
 
 #### K-fold cross-validation
 
 * We used K-fold cross-validation. K-fold cross validation is less prone to selection bias. This is because training and testing is performed in different parts k different times. 
 * k=10 is shown to result in relatively more robust model with low bias. Thus, we pick our k to be equal to 10.
 * Therefore, our data was split into 10 folds and at each model different combination of 9 folds are used for training and the remaining 1 fold is used for testing. 
+* The roc_auc and accuracy scores were very similar across the 10 folds indicating that the model was not overfit.
 * The roc_auc of the 10 folds are as follows:
 
-![ROC-AUC Score of the 10 folds](Ayse/Segment_2/images/roc_auc_original.png)
+----------roc_auc of 10 folds here---------
 
 * The mean roc_auc score of the 10 folds is: 
 
-![Mean ROC-AUC Score](Ayse/Segment_2/images/mean_roc_auc_original.png)
+-----mean roc_auc here-----
 
 #### Feature Selection with feature_importances
 
-* To check for important features we split that data into train and test sets using sklearn's train_test_split. We set 20% of our data as a test set and 80% of it as a training set.
+* To check for important features we split that data into train and test sets using sklearn's train_test_split. We set 20% of our trainvalid set (this consists of the training and validation set of the model) as a test set and 80% of it as a training set.
 * We standardize the data with StandardScaler and use the scaled data to get the feature_importances.
 
-![Feature Importances](Ayse/Segment_2/images/feature_importances_RF.png)
+----------feature importances chart about here--------
 
 
-* From feature importances we can see that BMI is the most important predictor of cardiovascular disease. The top 4 predictors of cardiovascular disease are bmi, age, systolic_bp and diastolic_bp respectively. We can create a model using only these variables and investigate if the performance of our model increases using SelectFromModel. SelectFromModel chooses the features that have greater importance than the mean importance of all the features. Gini impurity is used to determine the importance of a feature.
-* However, the performance of the model did not change with the selected. So, we decideded to keep them.
-* We retrain our model on the scaled dataset and predict it on the test dataset to obtain the accuracy score, confusion matrix and the classification report.
-* The accuracy score, the confusion matrix and classification report for our model are shown below:
+* From feature importances we can see that BMI is the most important feature affecting the performance of our Random Forest model. The top 4 most relevant features in predicting the outcome of cardiovascular disease are bmi, age, systolic_bp and pulse_pressure respectively.
+* We create a model using only these variables and investigate if the performance of our model increases. 
+*  SelectFromModel chooses the features that have greater importance than the mean importance of all the features. Gini impurity is used to determine the importance of a feature.
+* However, the performance of the selected model with only the selected features did not improve. In fact, all the values for recall, roc-auc and f1 scores decreased. So, we choose to keep all the features for now.
+* We retrain our model on the scaled dataset and predict it on the validation set to obtain the accuracy score, confusion matrix and the classification report. We also get the roc_auc score.
+* The accuracy and roc_auc scores, the confusion matrix and classification report for our model are shown below:
 
-![Confusion Matrix](Ayse/Segment_2/images/cf_matrix_original.png) 
+------cr, cm and accuracy scores here--------
 
-![Classification Report](Ayse/Segment_2/images/cr_original.png)
 
-* Even though the mean roc_auc score of our RF model is about 0.75, the accuracy score is much lower, 0.69. We perform hypertuning to find the best model.
+
+* Even though the mean roc_auc score of our RF model onnthe validation set is 0.75, the accuracy score is much lower, 0.69. We perform hypertuning to find the best model.
 * We search for the best parameters using scikit_learn's GridSearchCV function. We use 5-fold cross-validation for this stage because it was computationally very time consuming with the 10-fold. Also, we had to limit the parameters we wanted to pass in our GridSearchCV function because it became computationally impossible to complete the process with our resources.
 * The best parameters with the grid search are displayed below:
 
-![Best Parameters of the Grid Search](Ayse/Segment_2/images/best_params.png)
+----best params table here-----
 
 * Based on the results of the grid search we plug in the best parameters and recreate our random classifier model.
 * We retrain our model with the new hyperparameters.
-* We predict the new model and our accuracy score, confusion matrix and classification report are displayed below.
+* We predict the new model on our test set and our accuracy score, confusion matrix and classification report are displayed below.
 
 
-![Confusion Matrix Tuned](Ayse/Segment_2/images/cf_matrix_tuned.png) 
+----![Confusion Matrix Tuned]---here
 
-![Classification Report Tuned](Ayse/Segment_2/images/cr_tuned.png)
+------![Classification Report Tuned] here-----
 
 
 * We obtain our roc_auc scores and the mean score for the new model.
 
-![ROC-AUC Score of the 10 folds Tuned](Ayse/Segment_2/images/roc_auc_tuned.png)
+----![ROC-AUC Score of the 10 folds Tuned] here------
 
-![Mean ROC-AUC Score Tuned](Ayse/Segment_2/images/mean_roc_auc_tuned.png)
+-----![Mean ROC-AUC Score Tuned] here------
 
+#### Takeaway from Random Forest Classification Model
 
-* With hyperparameter tuning we were able to increase both the accuracy and roc-auc score. The accuracy score increased to 0.73 from 0.69, and the mean roc_auc score increased to almost 0.80 from 0.745. However, from the classification report we can see that our recall for the people with cardiovascular disease decreased (from 0.69 to 0.67) even though precision increased significantly (0.69 to 0.76). Since we would want our model to be able to predict people with or at risk of cardiovascular disease accurately we would like our recall score for the people that have heart disease (class 1) to be high. Also, with the tuned model the false negatives are higher and true positives are lower which we would not want.
+* With hyperparameter tuning we were able to increase the accuracy, roc-auc score, precision and F1 scores. The accuracy score increased to 0.73 from 0.69, the mean roc_auc score increased to almost 0.80 from 0.75 and the F1 score increased from 0.69 to 0.71. 
+* However, from the confusion matrix we can see that even though false positives decreased significantly (from 2033 to 669) true positives also decreasedby half. 
+* As a result, from the classification report we can see that our recall for the people with cardiovascular disease decreased (from 0.69 to 0.66) even though precision increased significantly (0.69 to 0.77).
+* Low recall score is not ideal for our model as this means that there is 44% of the time we will not be able to correctly diagnose people with cardiovascular disease that actually have cardiovascular disease. 
+* However, with higher precision, our model reduces the probability of patients being wrongly diagnosed with the disease--and potentially prevent wrong treatment. 
+* Even though, this model is not ideal, it is an improved version of the initial model with higher F1, accuracy and and roc_auc scores.In oreder to increase the performance of our model more feature engineering and selection and further hypertuning could be done to increase recall without reducing precision.¶
 
 #### Advantages of Random Forest 
 
@@ -525,13 +525,16 @@ nn.compile(loss="binary_crossentropy", optimizer ="rmsprop", metrics=["accuracy"
 
 ## Dashboard
 
-[❤ CLICK ME](http://127.0.0.1:5501/index.html).
 
-* The dashboard is slowly taking shape.
-* The dashboard is made interactive
-	- If the patient’s ID is selected , the demographic info of that patient shows in the demographic info column.
-	- If the patient’s ID is selected , the demographic info of that patient shows in the demographic info column.
-	- An option for user input will be created to take in health measures such as height, weight, BP etc. Based on the number, the users' chance of having cardiovascular disease will be calculated. 
-	- The gauge indicator will show if the user is cardio_positive (1) or cardio_negative (0).
-	- At this time, the gauge indicator will show if the patient (based on ID chosen) is at a risk of developing a heart disease.0 shows not at risk and 1 shows is at risk.
+[❤ CLICK ME]( https://krishnakalisarkar.github.io/Be_Heart_Smart/)
+
+* The dashboard called "Be Heart Smart", it is done with javascript.
+* The dashboard is made interactive.
+* If the patient’s ID is selected , the demographic informations of that patient shows in the demographic info column.
+* The gauge indicator shows if that patient has heart disease or not.0 shows does not have any cardiac disease and 1 shows the person has cardiac disease.
 * The horizontal bar graph shows the primary factors that are responsible for developing a heart disease.
+* The bubble chart shows the different behavioral factors that might contribute towards developing a heart disease.
+
+* In addition to the javascript dashboard an interactive Tableau Dashboard was created.
+
+[❤ CLICK ME TO GO TO THE TABLEAU DASHBOARD](https://public.tableau.com/app/profile/ayse1055/viz/BeHeartSmart/BeHeartSmartStory?publish=yes).
