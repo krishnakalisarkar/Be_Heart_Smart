@@ -8,7 +8,7 @@
 * Subhangi Ghosh
 * Krishnakali Sarkar
 
-[❤ CLICK ME TO GO TO THE PRESENTATION SLIDES](https://github.com/krishnakalisarkar/Be_Heart_Smart/blob/main/Presentation/Be_Heart_Smart_Presentation_Segment_2.pdf).
+[❤ CLICK ME TO GO TO THE PRESENTATION SLIDES](https://github.com/krishnakalisarkar/Be_Heart_Smart/blob/main/Presentation_3/Be_Heart_Smart_Presentation_Segment_3.pdf).
 
 
 ## Topic
