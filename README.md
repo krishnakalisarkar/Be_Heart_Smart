@@ -126,7 +126,7 @@ The following are the ranges of each continuous feature of the dataset, and the 
 #### Checking for outliers:
 * To check for outliers in the features like systole, diastole, height and weight, four box plots were created and from the box plots the outliers are calculated.
 
-![Outliers](Images/Images_NN/box_plots.png)
+![Outliers](Images/Images_NN/Box_plots.png)
 
 #### Removing the outlier rows:
 * Based on the outlier values, the entire dataset is cleaned and the rows with outlier data is dropped in features like systole, diastole, height and weight.
@@ -425,18 +425,18 @@ A better way to improve the recall without losing out on the accuracy or the har
 * The roc_auc and accuracy scores were very similar across the 10 folds indicating that the model was not overfit.
 * The roc_auc of the 10 folds are as follows:
 
-![Roc_auc_initial](Images/Images_RF/roc_auc_initial.png)
+![Roc_auc_initial](Images/images_RF/roc_auc_initial.png)
 
 * The mean roc_auc score of the 10 folds is: 
 
-![Roc_auc_initial_mean](Images/Images_RF/mean_roc_auc_initial.png)
+![Roc_auc_initial_mean](Images/images_RF/mean_roc_auc_initial.png)
 
 #### Feature Selection with feature_importances
 
 * To check for important features we split that data into train and test sets using sklearn's train_test_split. We set 20% of our trainvalid set (this consists of the training and validation set of the model) as a test set and 80% of it as a training set.
 * We standardize the data with StandardScaler and use the scaled data to get the feature_importances.
 
-![Feature Importances](Images/Images_RF/new_feature_importances.png)
+![Feature Importances](Images/images_RF/new_feature_importances.png)
 
 
 * From feature importances we can see that BMI is the most important feature affecting the performance of our Random Forest model. The top 4 most relevant features in predicting the outcome of cardiovascular disease are bmi, age, systolic_bp and pulse_pressure respectively.
@@ -446,9 +446,9 @@ A better way to improve the recall without losing out on the accuracy or the har
 * We retrain our model on the scaled dataset and predict it on the validation set to obtain the accuracy score, confusion matrix and the classification report. We also get the roc_auc score.
 * The accuracy and roc_auc scores, the confusion matrix and classification report for our model are shown below:
 
-![Roc_auc_score on the validation set](Images/Images_RF/roc_auc_valid.png)
-![Confusion Matrix on the validation set](Images/Images_RF/cm_valid.png)
-![Classification Report on the validation set](Images/Images_RF/cr_valid.png)
+![Roc_auc_score on the validation set](Images/images_RF/roc_auc_valid.png)
+![Confusion Matrix on the validation set](Images/images_RF/cm_valid.png)
+![Classification Report on the validation set](Images/images_RF/cr_valid.png)
 
 
 
@@ -456,21 +456,21 @@ A better way to improve the recall without losing out on the accuracy or the har
 * We search for the best parameters using scikit_learn's GridSearchCV function. We use 5-fold cross-validation for this stage because it was computationally very time consuming with the 10-fold. Also, we had to limit the parameters we wanted to pass in our GridSearchCV function because it became computationally impossible to complete the process with our resources.
 * The best parameters with the grid search are displayed below:
 
-![Grid Search Best Parameters](Images/Images_RF/best_params_df.png)
+![Grid Search Best Parameters](Images/images_RF/best_params_df.png)
 
 
 * Based on the results of the grid search we plug in the best parameters and recreate our random classifier model.
 * We retrain our model with the new hyperparameters.
 * We predict the new model on our test set and our accuracy score, confusion matrix and classification report are displayed below.
 
-![Confusion Matrix on the validation set](Images/Images_RF/cm_tuned.png)
-![Classification Report on the validation set](Images/Images_RF/cr_tuned.png)
+![Confusion Matrix on the validation set](Images/images_RF/cm_tuned.png)
+![Classification Report on the validation set](Images/images_RF/cr_tuned.png)
 
 * We obtain our roc_auc scores and the mean score for the new model.
 
-![Final Roc_auc_score of the 10 fold](Images/Images_RF/roc_auc_tuned.png)
+![Final Roc_auc_score of the 10 fold](Images/images_RF/roc_auc_tuned.png)
 
-![Final Mean Roc_auc_score ](Images/Images_RF/mean_roc_auc_tuned.png)
+![Final Mean Roc_auc_score ](Images/images_RF/mean_roc_auc_tuned.png)
 
 #### Takeaway from Random Forest Classification Model
 
