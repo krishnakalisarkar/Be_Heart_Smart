@@ -8,7 +8,9 @@
 * Subhangi Ghosh
 * Krishnakali Sarkar
 
-[❤ CLICK ME TO GO TO THE PRESENTATION SLIDES](https://github.com/krishnakalisarkar/Be_Heart_Smart/blob/main/Presentation_3/Be_Heart_Smart_Presentation_Segment_3.pdf).
+[❤ CLICK ME TO GO TO THE PRESENTATION SLIDES](https://github.com/krishnakalisarkar/Be_Heart_Smart/blob/main/Presentation/Be_Heart_Smart_Presentation_Segment_2.pdf).
+[❤ CLICK ME TO GO TO DATASET DASHBOARD]( https://krishnakalisarkar.github.io/Be_Heart_Smart/)
+[❤ CLICK ME TO GO TO THE TABLEAU DASHBOARD](https://public.tableau.com/app/profile/ayse1055/viz/BeHeartSmart/BeHeartSmartStory?publish=yes).
 
 
 ## Topic
@@ -122,6 +124,8 @@ The following are the ranges of each continuous feature of the dataset, and the 
 #### Checking for outliers:
 * To check for outliers in the features like systole, diastole, height and weight, four box plots were created and from the box plots the outliers are calculated.
 
+![Outliers](Images/Images_NN/box_plots.png)
+
 #### Removing the outlier rows:
 * Based on the outlier values, the entire dataset is cleaned and the rows with outlier data is dropped in features like systole, diastole, height and weight.
 * The dataset is reduced from 70,000 rows to 60,532 rows.
@@ -132,12 +136,18 @@ The following are the ranges of each continuous feature of the dataset, and the 
 * A groupby on cardio and cholesterol and performing a mean shows that cholesterol levels more than 240 had a higher chance of developing heart disease.
 * Normal cholesterol level has a lesser chance of developing heart disease.
 
+![Cholesterol](Images/Images_NN/cholesterol.png)
+
 #### Effect of high glucose on developing Cardiac disease:
 * A groupby on cardio and glucose and performing a mean shows that high glucose levels had a higher chance of developing heart disease.
 * Normal glucose level has a lesser chance of developing heart disease.
 
+![Glucose](Images/Images_NN/glucose.png)
+
 #### Effect of gender on developing Cardiac disease:
 * From this dataset, both male and female are at equal risk of developing heart disease.
+
+![Gender](Images/Images_NN/gender_alcohol.png)
 
 #### Effect of alcohol consumption on developing Cardiac disease:
 * From this dataset, it is evident that alcohol consumption alone with no other underlying condition has no effect on developing heart disease.
@@ -150,11 +160,13 @@ The following are the ranges of each continuous feature of the dataset, and the 
 * The cholesterol levels are categorized as normal = 1, moderate = 2 and high =3.
 * A grouped bar plot is created using Matplotlib.
 
+![Cholesterol-Gender](Images/Images_NN/Cardio_cholesterol_gender.png)
+
 #### Results:
 The interesting facts that showed up in the bar plot are as follows:
 * Having normal cholesterol levels, females have a slightly higher risk of developing heart diseases than males.
 * Even with moderate cholesterol levels, females have a slightly higher risk of developing heart diseases than males.
-* Interestingly, with high cholesterol levels, males have a higher risk of developing heart disease than males.
+* Interestingly, with high cholesterol levels, males have a higher risk of developing heart disease than females.
 * The association between testosterone and cholesterol levels is long known. As men age, their bodies make less testosterone, hence older men are more likely to have heart problems and high cholesterol.
 
 #### Effects of glucose on developing heart diseases as seen based on gender.
@@ -162,9 +174,11 @@ The interesting facts that showed up in the bar plot are as follows:
 * The glucose levels are categorized as normal = 1, moderate = 2 and high =3.
 * A grouped bar plot is created using Matplotlib.
 
+![Glucose-Gender](Images/Images_NN/glucose_cardio.png)
+
 #### Results:
 The facts that showed up in the bar plot are as follows:
-* With normal, moderate and high glucose levels, both males and females are at equal risk of developing heart diseases.
+* Interestingly, with high glucose levels, males have a higher risk of developing heart disease than females.
 
 ## Database: 
 
@@ -409,18 +423,18 @@ A better way to improve the recall without losing out on the accuracy or the har
 * The roc_auc and accuracy scores were very similar across the 10 folds indicating that the model was not overfit.
 * The roc_auc of the 10 folds are as follows:
 
-----------roc_auc of 10 folds here---------
+![Roc_auc_initial](Images/Images_RF/roc_auc_initial.png)
 
 * The mean roc_auc score of the 10 folds is: 
 
------mean roc_auc here-----
+![Roc_auc_initial_mean](Images/Images_RF/mean_roc_auc_initial.png)
 
 #### Feature Selection with feature_importances
 
 * To check for important features we split that data into train and test sets using sklearn's train_test_split. We set 20% of our trainvalid set (this consists of the training and validation set of the model) as a test set and 80% of it as a training set.
 * We standardize the data with StandardScaler and use the scaled data to get the feature_importances.
 
-----------feature importances chart about here--------
+![Feature Importances](Images/Images_RF/new_feature_importances.png)
 
 
 * From feature importances we can see that BMI is the most important feature affecting the performance of our Random Forest model. The top 4 most relevant features in predicting the outcome of cardiovascular disease are bmi, age, systolic_bp and pulse_pressure respectively.
@@ -430,31 +444,31 @@ A better way to improve the recall without losing out on the accuracy or the har
 * We retrain our model on the scaled dataset and predict it on the validation set to obtain the accuracy score, confusion matrix and the classification report. We also get the roc_auc score.
 * The accuracy and roc_auc scores, the confusion matrix and classification report for our model are shown below:
 
-------cr, cm and accuracy scores here--------
+![Roc_auc_score on the validation set](Images/Images_RF/roc_auc_valid.png)
+![Confusion Matrix on the validation set](Images/Images_RF/cm_valid.png)
+![Classification Report on the validation set](Images/Images_RF/cr_valid.png)
 
 
 
-* Even though the mean roc_auc score of our RF model onnthe validation set is 0.75, the accuracy score is much lower, 0.69. We perform hypertuning to find the best model.
+* Even though the mean roc_auc score of our RF model on the validation set is 0.75, the accuracy score is much lower, 0.69. We perform hypertuning to find the best model.
 * We search for the best parameters using scikit_learn's GridSearchCV function. We use 5-fold cross-validation for this stage because it was computationally very time consuming with the 10-fold. Also, we had to limit the parameters we wanted to pass in our GridSearchCV function because it became computationally impossible to complete the process with our resources.
 * The best parameters with the grid search are displayed below:
 
-----best params table here-----
+![Grid Search Best Parameters](Images/Images_RF/best_params_df.png)
+
 
 * Based on the results of the grid search we plug in the best parameters and recreate our random classifier model.
 * We retrain our model with the new hyperparameters.
 * We predict the new model on our test set and our accuracy score, confusion matrix and classification report are displayed below.
 
-
-----![Confusion Matrix Tuned]---here
-
-------![Classification Report Tuned] here-----
-
+![Confusion Matrix on the validation set](Images/Images_RF/cm_tuned.png)
+![Classification Report on the validation set](Images/Images_RF/cr_tuned.png)
 
 * We obtain our roc_auc scores and the mean score for the new model.
 
-----![ROC-AUC Score of the 10 folds Tuned] here------
+![Final Roc_auc_score of the 10 fold](Images/Images_RF/roc_auc_tuned.png)
 
------![Mean ROC-AUC Score Tuned] here------
+![Final Mean Roc_auc_score ](Images/Images_RF/mean_roc_auc_tuned.png)
 
 #### Takeaway from Random Forest Classification Model
 
@@ -510,6 +524,8 @@ nn.compile(loss="binary_crossentropy", optimizer="adam", metrics=["accuracy"])
 * Various other trials were made where the hidden layers were increased to 5 and the number of neurons in each layers were increased.
 * In a few instances the input was changed from Relu to Sigmoid and the output was changed from Sigmoid to softmax.
 
+![Neural Network](Images/Images_NN/Be_Heart_smart_NN.png)
+
 #### Best results from the Neural Network Model:
 * The neural network model that gave an accuracy of 73%  had the following features:
 * 5 hidden hayers and the distribution of neurons are as follows:\
@@ -526,8 +542,6 @@ nn.compile(loss="binary_crossentropy", optimizer ="rmsprop", metrics=["accuracy"
 ## Dashboard
 
 
-[❤ CLICK ME]( https://krishnakalisarkar.github.io/Be_Heart_Smart/)
-
 * The dashboard called "Be Heart Smart", it is done with javascript.
 * The dashboard is made interactive.
 * If the patient’s ID is selected , the demographic informations of that patient shows in the demographic info column.
@@ -537,4 +551,5 @@ nn.compile(loss="binary_crossentropy", optimizer ="rmsprop", metrics=["accuracy"
 
 * In addition to the javascript dashboard an interactive Tableau Dashboard was created.
 
-[❤ CLICK ME TO GO TO THE TABLEAU DASHBOARD](https://public.tableau.com/app/profile/ayse1055/viz/BeHeartSmart/BeHeartSmartStory?publish=yes).
+
+
