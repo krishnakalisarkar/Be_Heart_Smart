@@ -8,11 +8,13 @@
 * Subhangi Ghosh
 * Krishnakali Sarkar
 
-[❤ CLICK ME TO GO TO THE PRESENTATION SLIDES](https://github.com/krishnakalisarkar/Be_Heart_Smart/blob/main/Presentation/Be_Heart_Smart_Presentation_Segment_2.pdf).
+[❤ CLICK ME TO GO TO THE PRESENTATION SLIDES](https://github.com/krishnakalisarkar/Be_Heart_Smart/blob/main/Presentation/Be_Heart_Smart_Presentation.pdf).
 
 [❤ CLICK ME TO GO TO DATASET DASHBOARD]( https://krishnakalisarkar.github.io/Be_Heart_Smart/)
 
 [❤ CLICK ME TO GO TO THE TABLEAU DASHBOARD](https://public.tableau.com/app/profile/ayse1055/viz/BeHeartSmart/BeHeartSmartStory?publish=yes).
+
+[❤ CLICK ME TO GO TO THE VIDEO RECORDING OF THE WEB APPLICATION PREDICTING CARDIAC HEALTH STATUS]
 
 
 ## Topic
@@ -40,7 +42,7 @@ A healthy heart is central to overall good health. The purpose of this project i
 ## Resources used
 - Data : https://www.kaggle.com/sulianova/cardiovascular-disease-dataset version 1 (Created 2019-01-19)
 
-- Software : Microsoft Excel 2018, Google Colab, Spark 3.1.2, Jupyter Notebook
+- Software : Please see Requirements.txt
 
 ## The Dataset Description:
 
@@ -184,84 +186,10 @@ The facts that showed up in the bar plot are as follows:
 
 ## Database: 
 
-* An initial PostgreSQL database is created namely "Be_Heart_Smart" and the raw data is inserted in that database.
-* A SQL query is generated to create the table:
-
-CREATE TABLE cardio_info (\
-  id numeric,\
-  age numeric,\
-  gender numeric,\
-  height numeric,\
-  weight numeric,\
-  ap_hi numeric,\
-  ap_lo numeric,\
-  cholesterol numeric,\
-  gluc numeric,\
-  alco numeric,\
-  active numeric,\
-  cardio numeric\
-);
-
-
-A cardio cleaned table is created in PostgreSQL database by using the following schema:
-
-CREATE TABLE final_cardio_cleaned (\
-	id numeric PRIMARY KEY,\
-	Age numeric NOT NULL,\
-	gender numeric NOT NULL,\
-	height numeric NOT NULL,\
-	weight numeric NOT NULL,\
-	systolic_bp numeric NOT NULL,\
-	diastolic_bp numeric NOT NULL,\
-	cholesterol numeric NOT NULL,\
-	glucose numeric NOT NULL,\
-	smoker numeric NOT NULL,\
-	alcohol_intake numeric NOT NULL,\
-	active numeric NOT NULL,\
-	cardio_disease numeric NOT NULL\
-);
-
-Once the table is created, the data is imported from the csv file.
-
-Another table BMI is also created including the BMI that was calculated from the height and weight of the patients. The following schema is used to make the table.
-
-CREATE TABLE final_BMI (\
-	id numeric PRIMARY KEY NOT NULL,\
-	BMI numeric NOT NULL,\
-	weight_status VARCHAR NOT NULL,\
-	obesity_status VARCHAR NOT NULL\
-);
-Once the table is created, the data is imported from the respective csv files.
-
-This was followed by joining the two tables on their ID which is their primary key, to create a cardio complete table. This was done using the following code:
-
-SELECT c.id,\
-	c.age,\
-    	c.gender,\
-	c.height,\
-    	c.weight,\
-	c.systolic_bp,\
-	c.diastolic_bp,\
-	c.cholesterol,\
-	c.glucose,\
-	c.smoker,\
-	c.alcohol_intake,\
-	c.active,\
-	c.cardio_disease,\
-	b.bmi,\
-	b.weight_status,\
-	b.obesity_status\
-INTO final_cardio_bmi_complete\
-FROM final_cardio_cleaned AS c\
-INNER JOIN final_BMI AS b\
-ON (c.id = b.id);\
-
-Once the cardio complete table is created, it is then connected to Jupyter notebook using SQL alchemy.
-
-* An AWS server connection was created in PostgreSQL and a database set up. The preliminary joined data table was made here, from where a connection was established with the jupyter notebooks for future analysis.\
-The final tables however were joined in the database in local PostgreSQL server, and accessed with SQLAlchemy for machine learning.
-
-
+* An PostgreSQL database, "Be_Heart_Smart", was created, which housed the raw data, ckeaned data.
+* The tables were merged here and exported into the respective machine learning codes.
+* The schema/queries can be found under the database folder. 
+ 
 ## Machine Learning
 
 ### Questions expected to be answered with our Machine Learning model
@@ -293,8 +221,17 @@ The final tables however were joined in the database in local PostgreSQL server,
 Data was loaded from PostgreSQL database Be_Heart_Smart, using sqlAlchemy to create a connection between the database and the jupyter notebook file, into a DataFrame cardio_cleaned_df. EDA was performed on the cleaned data, and the following insights were gained. (The various graphs and figures will be found in the folder Pictures/Segment_2/Images_Subhangi.) 
 
 * A density plot of age showed substantial overlap for cardio_disease positive (cardio_positive) and cardio_disease negative (cardio_negative) individuals. However the shift in peaks of the distribution indicates that for advanced age (over 55years), chances of developing cardiovascular disease increases.
+
+![Age-CardiacDisease-Relationship](Images/Images_LR/Cardio_Cleaned_Density_Age.png)
+
 * A density plot of weight showerd substantial overlap for cardio_positive cardio_negative individuals with a marginal shift of cardio_positive towards higher weight.
-* Box plot of age distribution across different cholesterol levels shows increasing cholesterol levels with age. Cardio_positive individuals were older compared to cardio_negative (as also observed in the density plot for age). The difference in age was greatest for normal cholesterol levels.
+
+![Weight-CardiacDisease-Relationship](Images/Images_LR/Cardio_Cleaned_Density_Weight.png)
+
+* Bar graphs showing the relationship pf cholesterol with cardiovascular disease (CVD) shows that CVD is more prevalant in patients with cholesterol leves above normal.
+
+![Cholesterol-CardiacDisease-Relationship](Images/Images_LR/Cardio_Cleaned_CountPlot_Cholesterol.png)
+
 * Box plot of weight distribution across different cholesterol levels do not show much variation across different cholesterol levels. However cardio_positive individuals were heavier compared to cardio_negative accross all cholesterol levels. A large number of outliers were also seen.
 * Box-plot of age accross different glucose levels also showed a slight shift towards higher age as glucose levels increased.
 * Box plot of weight across different glucose levels also show a lot of outliers. Individuals with moderate and high glucose levels were heavier compared to individuals with normal glucose levels.
@@ -377,7 +314,7 @@ The scaled train, validation, and test sets were trimmed down to include only th
 
 The model was fit on the scaled train set, and tested on the validation set. Recall of 67%, f1 score of 71%, with an accuracy of 72.6% was achieved. 
 
-(attach pictures of the classification report)
+(put the image of classification report)
 
 #### Increase Recall for true prediction of existence of cardio_disease by hypertuning the threshold
 
@@ -388,7 +325,9 @@ The AUC_ROC strategy calculated the threshold to be around 0.47.
 
 Recall/Precision vs Threshold graph showed that recall drops quickly as threshold increases. Precision increases as threshold increases but the change is not as daramatic as the recall curve.\
 The precision vs recall curve gave a clearer picture of thier relationship. Based on this, a threshold of 0.4 was chosen to optimize recall without greatly compromising accuracy or the harmonic mean.\
-(The plots are in the folder the folder Pictures/Segment_2/Images_Subhangi.)
+![Precision/Recall_vs_Threshold](Images/Images_LR/Precision_Recall_vs_Threshold.png)
+![Precision_vs_Recall](Images/Images_LR/Precision_vs_Recall.png)
+
 
 The logistic regression model was re-run on the validation set, which gave a recall of 80.9% with an accuracy of 70.6%
 
@@ -555,7 +494,9 @@ nn.compile(loss="binary_crossentropy", optimizer ="rmsprop", metrics=["accuracy"
 * There is no standard theory to guide in selecting the right 
 deep learning tool.
 
-## Dashboard
+## Dashboards
+
+### Dashboard exploring the dataset in datails
 
 * The dashboard called "Be Heart Smart", it is done with javascript.
 * The dashboard is made interactive.
@@ -564,6 +505,35 @@ deep learning tool.
 * The horizontal bar graph shows the primary factors that are responsible for developing a heart disease.
 * The bubble chart shows the different behavioral factors that might contribute towards developing a heart disease.
 * In addition to the javascript dashboard an interactive Tableau Dashboard is also created.
+
+### Dashboad exploring the whole dataset
+
+* An interactive dashboard was created in Tableau
+
+### Dashboard of a web application that predits the cardiovascular health of the user
+* Web application is deployed on the local server.
+* Following are the requirements for launching the application:-
+- Software: VS Code, Pandas, Numpy SQL Alchemy, sci-kit learn, PostgreSQL, Flask
+- Data : final_cardio_combined.csv
+* Programs used here are LRPrediction.py, app.py, index.html (in folder templates), style.css in folder css, and images folder.
+* Here the csv file was imported from PostgreSQL. However the program LRPrediction can be edited to read the data directly from the csv file.
+* The app needs to be launched by executing flask run in the same folder where app.py is located.
+* The local server link needs to be opened on Google Chrome in an incognito mode.
+* The launched app will look like below:
+
+![App_Launch_Page](Cardiovascular_Disease_Prediction_Dashboard/Images_Video_Dashboard/Dashboard_FullPage.png)
+
+* Data or required health numbers can be entered by the user in the input feilds provided. User may move to the next input field using tab or mouse click.
+* Clicking on submit button will produce the result as seen below,
+
+![Cardio_Disease_Prediction_Platform](Cardiovascular_Disease_Prediction_Dashboard/Images_Video_Dashboard/Prediction_Dashboard.png)
+
+* The top part of the dashboard provides an introduction. The user can reach the source of the information by clicking on the NIH link.
+* The bottom part of the app presents insights gained from the dataset, and the logistic regression model. Links are provided to reach the other related dashboards.
+Be-Heart-Smart-Tableau and Be-Heart_Smart that explores the details of the dataset.
+* A video demonstration is attached at the top of this page.
+
+
 
 
 
