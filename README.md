@@ -168,82 +168,9 @@ The facts that showed up in the bar plot are as follows:
 
 ## Database: 
 
-* An initial PostgreSQL database is created namely "Be_Heart_Smart" and the raw data is inserted in that database.
-* A SQL query is generated to create the table:
-
-CREATE TABLE cardio_info (\
-  id numeric,\
-  age numeric,\
-  gender numeric,\
-  height numeric,\
-  weight numeric,\
-  ap_hi numeric,\
-  ap_lo numeric,\
-  cholesterol numeric,\
-  gluc numeric,\
-  alco numeric,\
-  active numeric,\
-  cardio numeric\
-);
-
-
-A cardio cleaned table is created in PostgreSQL database by using the following schema:
-
-CREATE TABLE final_cardio_cleaned (\
-	id numeric PRIMARY KEY,\
-	Age numeric NOT NULL,\
-	gender numeric NOT NULL,\
-	height numeric NOT NULL,\
-	weight numeric NOT NULL,\
-	systolic_bp numeric NOT NULL,\
-	diastolic_bp numeric NOT NULL,\
-	cholesterol numeric NOT NULL,\
-	glucose numeric NOT NULL,\
-	smoker numeric NOT NULL,\
-	alcohol_intake numeric NOT NULL,\
-	active numeric NOT NULL,\
-	cardio_disease numeric NOT NULL\
-);
-
-Once the table is created, the data is imported from the csv file.
-
-Another table BMI is also created including the BMI that was calculated from the height and weight of the patients. The following schema is used to make the table.
-
-CREATE TABLE final_BMI (\
-	id numeric PRIMARY KEY NOT NULL,\
-	BMI numeric NOT NULL,\
-	weight_status VARCHAR NOT NULL,\
-	obesity_status VARCHAR NOT NULL\
-);
-Once the table is created, the data is imported from the respective csv files.
-
-This was followed by joining the two tables on their ID which is their primary key, to create a cardio complete table. This was done using the following code:
-
-SELECT c.id,\
-	c.age,\
-    	c.gender,\
-	c.height,\
-    	c.weight,\
-	c.systolic_bp,\
-	c.diastolic_bp,\
-	c.cholesterol,\
-	c.glucose,\
-	c.smoker,\
-	c.alcohol_intake,\
-	c.active,\
-	c.cardio_disease,\
-	b.bmi,\
-	b.weight_status,\
-	b.obesity_status\
-INTO final_cardio_bmi_complete\
-FROM final_cardio_cleaned AS c\
-INNER JOIN final_BMI AS b\
-ON (c.id = b.id);\
-
-Once the cardio complete table is created, it is then connected to Jupyter notebook using SQL alchemy.
-
-* An AWS server connection was created in PostgreSQL and a database set up. The preliminary joined data table was made here, from where a connection was established with the jupyter notebooks for future analysis.\
-The final tables however were joined in the database in local PostgreSQL server, and accessed with SQLAlchemy for machine learning.
+* An PostgreSQL database, "Be_Heart_Smart", was created, which housed the raw data, ckeaned data.
+* The tables were merged here and exported into the respective machine learning codes.
+* The schema/queries can be found under the database folder. 
 
 
 ## Machine Learning
