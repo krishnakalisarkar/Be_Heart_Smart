@@ -544,8 +544,18 @@ hidden_nodes_layer5 = 50
 nn.compile(loss="binary_crossentropy", optimizer ="rmsprop", metrics=["accuracy"])
 * Ann visualizer provides a good picture of the neural network model.
 
-## Dashboard
+### Advantages of Deep Neural Network
 
+* Features are automatically deduced and optimally tuned for desired outcome.
+* The same neural network based approach can be applied to many different applications.
+
+### Disadvantages of Deep Neural Network
+
+* It requires very large amount of dataset to perform better than other techniques.
+* There is no standard theory to guide in selecting the right 
+deep learning tool.
+
+## Dashboard
 
 * The dashboard called "Be Heart Smart", it is done with javascript.
 * The dashboard is made interactive.
@@ -553,8 +563,7 @@ nn.compile(loss="binary_crossentropy", optimizer ="rmsprop", metrics=["accuracy"
 * The gauge indicator shows if that patient has heart disease or not.0 shows does not have any cardiac disease and 1 shows the person has cardiac disease.
 * The horizontal bar graph shows the primary factors that are responsible for developing a heart disease.
 * The bubble chart shows the different behavioral factors that might contribute towards developing a heart disease.
-
-* In addition to the javascript dashboard an interactive Tableau Dashboard was created.
+* In addition to the javascript dashboard an interactive Tableau Dashboard is also created.
 
 
 
