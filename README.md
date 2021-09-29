@@ -529,8 +529,7 @@ nn.compile(loss="binary_crossentropy", optimizer="adam", metrics=["accuracy"])
 * Various other trials were made where the hidden layers were increased to 5 and the number of neurons in each layers were increased.
 * In a few instances the input was changed from Relu to Sigmoid and the output was changed from Sigmoid to softmax.
 
-![Neural_Network](Images/Images_NN/Be_Heart_smart_NN.png)
-
+![Neural_Network](Images/Images_NN/NN_model.png)
 
 #### Best results from the Neural Network Model:
 * The neural network model that gave an accuracy of 73%  had the following features:
