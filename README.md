@@ -447,7 +447,9 @@ A better way to improve the recall without losing out on the accuracy or the har
 * The accuracy and roc_auc scores, the confusion matrix and classification report for our model are shown below:
 
 ![Roc_auc_score on the validation set](Images/images_RF/roc_auc_valid.png)
+
 ![Confusion Matrix on the validation set](Images/images_RF/cm_valid.png)
+
 ![Classification Report on the validation set](Images/images_RF/cr_valid.png)
 
 
@@ -464,6 +466,7 @@ A better way to improve the recall without losing out on the accuracy or the har
 * We predict the new model on our test set and our accuracy score, confusion matrix and classification report are displayed below.
 
 ![Confusion Matrix on the validation set](Images/images_RF/cm_tuned.png)
+
 ![Classification Report on the validation set](Images/images_RF/cr_tuned.png)
 
 * We obtain our roc_auc scores and the mean score for the new model.
@@ -526,7 +529,8 @@ nn.compile(loss="binary_crossentropy", optimizer="adam", metrics=["accuracy"])
 * Various other trials were made where the hidden layers were increased to 5 and the number of neurons in each layers were increased.
 * In a few instances the input was changed from Relu to Sigmoid and the output was changed from Sigmoid to softmax.
 
-![Neural Network](Images/Images_NN/Be_Heart_smart_NN.png)
+![Neural_Network](Images/Images_NN/Be_Heart_smart_NN.png)
+
 
 #### Best results from the Neural Network Model:
 * The neural network model that gave an accuracy of 73%  had the following features:
