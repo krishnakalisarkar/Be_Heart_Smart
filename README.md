@@ -14,7 +14,7 @@
 
 [❤ CLICK ME TO GO TO THE TABLEAU DASHBOARD](https://public.tableau.com/app/profile/ayse1055/viz/BeHeartSmart/BeHeartSmartStory?publish=yes).
 
-[❤ CLICK ME TO GO TO THE VIDEO RECORDING OF THE WEB APPLICATION PREDICTING CARDIAC HEALTH STATUS]
+[❤ CLICK ME TO GO TO THE VIDEO RECORDING OF THE WEB APPLICATION PREDICTING CARDIAC HEALTH STATUS](Cardiovascular_Disease_Prediction_Dashboard/Images_Video_Dashboard/WebApp_Demonstration_Recording.mp4)
 
 
 ## Topic
@@ -192,7 +192,7 @@ The facts that showed up in the bar plot are as follows:
  
 ## Machine Learning
 
-### Questions expected to be answered with our Machine Learning model
+### Questions expected to be answered with our Machine Learning models
 
 * Is a person at risk of cardiovascular disease?
 * What are the potential risk factors for cardiovascular disease--smoking, alcohol consumption, obesity, etc?
@@ -222,22 +222,33 @@ Data was loaded from PostgreSQL database Be_Heart_Smart, using sqlAlchemy to cre
 
 * A density plot of age showed substantial overlap for cardio_disease positive (cardio_positive) and cardio_disease negative (cardio_negative) individuals. However the shift in peaks of the distribution indicates that for advanced age (over 55years), chances of developing cardiovascular disease increases.
 
-![Age-CardiacDisease-Relationship](Images/Images_LR/Cardio_Cleaned_Density_Age.png)
+![Age-CardiacDisease-Relationship](Images/Images_EDA_LR/Cardio_Cleaned_Density_Age.png)
 
-* A density plot of weight showerd substantial overlap for cardio_positive cardio_negative individuals with a marginal shift of cardio_positive towards higher weight.
+* A density plot of weight showerd substantial overlap for positive and negative for cardio_disease with a marginal shift of being positive for cardio_disease towards higher weight.
 
-![Weight-CardiacDisease-Relationship](Images/Images_LR/Cardio_Cleaned_Density_Weight.png)
+![Weight-CardiacDisease-Relationship](Images/Images_EDA_LR/Cardio_Cleaned_Density_Weight.png)
 
-* Bar graphs showing the relationship pf cholesterol with cardiovascular disease (CVD) shows that CVD is more prevalant in patients with cholesterol leves above normal.
+* Bar graphs exploring the relationship of cholesterol with cardiovascular disease (CVD) show that CVD is more prevalant in patients with cholesterol leves above normal.\
+Box plot of weight distribution across different cholesterol levels do not show much variation across different cholesterol levels. However cardio_positive individuals were heavier compared to cardio_negative accross all cholesterol levels. A large number of outliers were also seen.\
+Box plot of age distribution across different cholesterol levels shows that with higher cholesterol levels there is a slight shift towards higher age. Cardio_positive individuals were older compared to cardio_negative accross all cholesterol levels. 
 
-![Cholesterol-CardiacDisease-Relationship](Images/Images_LR/Cardio_Cleaned_CountPlot_Cholesterol.png)
+![Cholesterol-CardiacDisease-Weight-Age-Relationship](Images/Images_EDA_LR/Cardio_Cleaned_Cholesterol_CardioDisease_Age_Weight.png)
 
-* Box plot of weight distribution across different cholesterol levels do not show much variation across different cholesterol levels. However cardio_positive individuals were heavier compared to cardio_negative accross all cholesterol levels. A large number of outliers were also seen.
-* Box-plot of age accross different glucose levels also showed a slight shift towards higher age as glucose levels increased.
-* Box plot of weight across different glucose levels also show a lot of outliers. Individuals with moderate and high glucose levels were heavier compared to individuals with normal glucose levels.
-* Box plot of weight across activity levels did not show any difference between active and non-active individuals, however there were a lot of outliers.
-* A very visible shift towards higher numbers were observed in blood pressure (for both diastolic and systolic) in cardio_positive individuals.
-* Blood pressure was also shown to be increasing with age for cardio_negative individuals, whereas it remained steady at a higher number in cardio_positive individuals.
+* Bar graphs showing the relationship of glucose with cardiovascular disease (CVD) shows that CVD is slightly more prevalant in patients with glucose leves above normal.\
+Box plots of weight distribution across different glucose show a lot of outliers. Individuals with moderate and high glucose levels were heavier compared to individuals with normal glucose levels.
+Box plots of age accross different glucose levels also showed a slight shift towards higher age as glucose levels increased.
+
+![GLucose-CardiacDisease-Weight-Age-Relationship](Images/Images_EDA_LR/Cardio_Cleaned_Glucose_CardioDisease_Weight_Age.png)
+
+* A bar graph exploring the relationship between being active or not, and cardiovascular disease shows that for groups that were "yes" for active, the counts of positive for cardiovascular disease was slightly lower, whereas groups that were "no" for active, the counts of positive for cardiovascular disease was slightly higher.\
+Box plot of weight across activity levels did not show any difference between active and non-active individuals, however there were a lot of outliers.
+
+![Active-CardiacDisease-Weight-Relationship](Images/Images_EDA_LR/Cardio_Cleaned_Active_CardioDisease_Weight.png)
+
+* Graphs showing the relationship between blood pressure and cardiovascular disease showed that the group that were positive for cardiovascular disease also showed higher blood pressure numbers (for both systolic and diastolic BP).\
+Both systolic and diastolic BP were also observed to be increasing with age for the groups negative for cardiovascular disease, whereas it remained steady at a high number in cardio_positive individuals.
+
+![BloodPressure-CardiacDisease-Relationship](Images/Images_EDA_LR/Cardio_Cleaned_BP.png)
 
 ### Feature Engineering
 
@@ -246,13 +257,25 @@ Feature engineering was performed at different stages.
 * BMI was further used to create to create two more categorical features.
 	- obesity_status was created as a broad classification of BMI with value "yes" for BMI > 30, and value "no" otherwise.
 	- weight_status was created as finer classification of BMI. This was done to provide options to run machine learning algorithms with different demarcation for the same information. Weight status was assigned according to the CDC.gov website, as follows: underweight (BMI<=18.5) , normal (18.5<BMI<25), overweight (25<=BMI<30), and obese (BMI>=30).
+* Density plot of the relationship between BMI and Cardio disease shows a slim shift of the curve towards positive for cardiovascular disease as BMI beyond 30.\
+Bar plots comparing people who are overweight and not-overweight show that for overweight category there is a very slim increase in the number of cardiovascular patients.
+In contrast bar plots comparing obesity and non-obesity clearly show that obese category has higher numbers of patients with cardiovascular disease.
+
+![BMI-Overweight-Obesity-CardiacDisease-Relationship](Images/Images_EDA_LR/BMI_Overweight_Obesity.png)
+
 * A new feature called "pulse_pressure" was created that measured  the difference between systolic and diastolic blood pressure for each observation.
+* Density plot of pulse pressure clearly shows that as pulse pressure increases the density peaks of positive for cardiovascular disease becomes higher than negative for cardiovascular disease. Moreover the difference between cardio-positive and cardio-negative also increases as pulse pressure increases.
+
+![PulsePressure-CardiacDisease-Relationship](Images/Images_EDA_LR/Cardio_Cleaned_Merged_Density_PulsePressure.png)
+
+The takeaway from the various EDA plots is that many of the variables that show strong correlation with cardiovascular disease show dependency amongst themselves. This is shown in a correlation matrix discussed below.\
+These variables are also retured as the important features that influence the results of cardiovascular health in the different suprevised learning machine learning algorithms that is discussed below.\
 
 ### Table Joining in the Database
 
 * A new DataFrame called BMI_df was created with the columns BMI, weight_status, obesity_status. This was extracted into final_BMI.csv, and loaded into the PostgreSQL Be_heart_Smart database as a new table called final_bmi_status.
 * The tables final_cardio_cleaned and final_bmi_status were joined in SQL into a new table final_cardio_combined.
-* A generalized schema of the tables is shown in the database section here. The specific code for joining and pictures will be found in the folder Pictures/Segment_2/Images_Subhangi.)
+* A generalized schema of the tables is given in the database section. 
 
 ### Data Processing
 
@@ -285,7 +308,7 @@ Various steps were performed leading to, and during logistic regression.
 * "tbl_id" was dropped.
 * Variables were divided into Target, which included "cardio_disease", and Features, which included the remaining variables.
 * The data points were then split into three sets as Train, Validate, and Test in the ratio 60:20:20.
-* Data was scaled using the standard scaler.The model was fit on the scaled training set, and then was used to tranform the scaled training, and testing set.
+* Data was scaled using the standard scaler. The model was fit on the scaled training set, and then was used to tranform the scaled training, and testing set.
 
 
 #### Stratified Kfold cross-validation 
@@ -295,8 +318,10 @@ Predicting an individial has cardiovascular disease when he/she does not is a fa
 However,  incorrectly predicting an individual to be cardiac healthy has a much greater consequence. A False negative puts the individual at risk.\
 Therefore, in this case recall or sensitivity to be maximized, because greater the recall the lesser are the chances of false negative predictions.
 
-A Linear Regression model was initiated, and crossvalidated on the training set using stratified KFold cross-validation, with a k=10 number of folds.\
+A Linear Regression model was initiated, and cross-validated on the training set using stratified KFold cross-validation, with a k=10 number of folds.\
 The model was evaluated by scoring recall. The recall scores of all 10 folds were very similar around 66%, indicating that the model did not overfit.
+
+![KFold-Crossvalidation_Scores](Images/Images_EDA_LR/K_Fold-CrossValidation_Score.png)
 
 #### Feature selection
 
@@ -307,14 +332,21 @@ On training logistic regression with these two features on the scaled train set,
 However the accuracy drops to 50%, like a random chance of the model being able to correctly predict the outcome of whether a patient is positive or negative for heart disease.\
 The incorrect prediction of the model in this case would be biased towards false positives, but because the model will correctly predict only half the time, this model was not considered any further.
 
-SFS was executed again but this time performance was scored on the harmonic mean. The following six features were chosen as important.\
-age, underweight, is_obese, systolic_bp, pulse_pressure, cholesterol_high, active.
+SFS was executed again but this time performance was scored on the harmonic mean. 
 
-The scaled train, validation, and test sets were trimmed down to include only the above seven features. A correlation matrix showed the a high correlation between the systolic+bp and pulse pressure, as expected. However both features were kept for the machine learning. 
+![SFS_FeatureSelection](Images/Images_EDA_LR/Feature_selection_all.png)
+
+The following six features were chosen as important.\
+age, underweight, is_obese, systolic_bp, pulse_pressure, cholesterol_high, active.\
+To be noted here is that the dependency of cardiovascular disease on these features are clearly shown in the EDA graphs above.
+
+The scaled train, validation, and test sets were trimmed down to include only the above seven features. A correlation matrix showed the a high correlation between the systolic_bp and pulse pressure, as expected. However both features were kept for the machine learning. 
+
+![CorrelationMatrix_Important_Features](Images/Images_EDA_LR/Correlation_Matrix_Trimmed_Features.png)
 
 The model was fit on the scaled train set, and tested on the validation set. Recall of 67%, f1 score of 71%, with an accuracy of 72.6% was achieved. 
 
-(put the image of classification report)
+![Classification_Report](Images/Images_EDA_LR/results_LR.png)
 
 #### Increase Recall for true prediction of existence of cardio_disease by hypertuning the threshold
 
@@ -323,21 +355,24 @@ Hypertuning of the model was the next step to improve the recall without losing 
 A Reciever Operating Characteristic (ROC) curve was plotted, and it showed an AUC score of 78%.\
 The AUC_ROC strategy calculated the threshold to be around 0.47.
 
+![ROC_AUC](Images/Images_EDA_LR/ROC_AUC.png)
+
 Recall/Precision vs Threshold graph showed that recall drops quickly as threshold increases. Precision increases as threshold increases but the change is not as daramatic as the recall curve.\
 The precision vs recall curve gave a clearer picture of thier relationship. Based on this, a threshold of 0.4 was chosen to optimize recall without greatly compromising accuracy or the harmonic mean.\
-![Precision/Recall_vs_Threshold](Images/Images_LR/Precision_Recall_vs_Threshold.png)
-![Precision_vs_Recall](Images/Images_LR/Precision_vs_Recall.png)
 
+![Precision/Recall_vs_Threshold](Images/Images_EDA_LR/ChoosingThreshold_Recall_Precision.png)
 
 The logistic regression model was re-run on the validation set, which gave a recall of 80.9% with an accuracy of 70.6%
 
-The model in its final form was then executed on the scaled test set. This set of data was not "seen" by the model in earlier steps to reduce data leakage. Logistic regression on the test set gave a recall of 81%, precision of 67.2%, and an accuracy of 70.8%.
+![Result_NewThreshold_Validation_Set](Images/Images_EDA_LR/Report_Validation_NewThreshold.png)
 
-(add pictures of the final model report)
+The model in its final form, with a threshold of 0.4, was then executed on the scaled test set. This set of data was not "seen" by the model in earlier steps to reduce data leakage. Logistic regression on the test set gave a recall of 81%, precision of 67.2%, an accuracy of 70.8%, and a calculated F1-score of 73%
+
+![Final_Result_LR_Model_Test_Set](Images/Images_EDA_LR/Final_Report_Test_Set.png)
 
 #### Takeaway from Logistic Regression
 
-The takeaway from the above exercise was that the nature of the dataset was such that the best overall accuracy was around 70%, and the precision and the recall are tied up such that if recall were to be maximised by manipulating the data, accuracy, and precision would quickly fall.\
+The takeaway from the above exercise was that the nature of the dataset was such that the best overall accuracy was around 70% with this logistic regression model, and the precision and the recall are tied up such that if recall were to be maximised to 94% by stringent feature selection, then accuracy, and precision would quickly fall.\
 A better way to improve the recall without losing out on the accuracy or the harmonic mean was to instead hypertune the model by lowering the threshold from it's default of 0.5 to 0.4 to positively predict cardiac disease.
 
 
@@ -504,7 +539,7 @@ deep learning tool.
 * The gauge indicator shows if that patient has heart disease or not.0 shows does not have any cardiac disease and 1 shows the person has cardiac disease.
 * The horizontal bar graph shows the primary factors that are responsible for developing a heart disease.
 * The bubble chart shows the different behavioral factors that might contribute towards developing a heart disease.
-* In addition to the javascript dashboard an interactive Tableau Dashboard is also created.
+* A web application of this dashboard deployed on local server also allows the user to get updated news on Cardiovascular health by web scraping. The code and details of the web-scraping web app may be found in the docs folder of the main branch.
 
 ### Dashboad exploring the whole dataset
 
