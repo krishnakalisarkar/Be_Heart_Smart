@@ -261,7 +261,7 @@ Feature engineering was performed at different stages.
 Bar plots comparing people who are overweight and not-overweight show that for overweight category there is a very slim increase in the number of cardiovascular patients.
 In contrast bar plots comparing obesity and non-obesity clearly show that obese category has higher numbers of patients with cardiovascular disease.
 
-![BMI-Overweight-Obesity-CardiacDisease-Relationship](Images/Images_EDA_LR/BMI_Overweight_Obesity.png)
+![BMI-Overweight-Obesity-CardiacDisease-Relationship](Images/Images_EDA_LR/BMI_Overweight_Obesity_CardiacDisease.png)
 
 * A new feature called "pulse_pressure" was created that measured  the difference between systolic and diastolic blood pressure for each observation.
 * Density plot of pulse pressure clearly shows that as pulse pressure increases the density peaks of positive for cardiovascular disease becomes higher than negative for cardiovascular disease. Moreover the difference between cardio-positive and cardio-negative also increases as pulse pressure increases.
@@ -321,7 +321,7 @@ Therefore, in this case recall or sensitivity to be maximized, because greater t
 A Linear Regression model was initiated, and cross-validated on the training set using stratified KFold cross-validation, with a k=10 number of folds.\
 The model was evaluated by scoring recall. The recall scores of all 10 folds were very similar around 66%, indicating that the model did not overfit.
 
-![KFold-Crossvalidation_Scores](Images/Images_EDA_LR/K_Fold-CrossValidation_Score.png)
+![KFold-Crossvalidation_Scores](Images/Images_EDA_LR/K_Fold_CrossValidation_Score.png)
 
 #### Feature selection
 
@@ -539,7 +539,7 @@ deep learning tool.
 * The gauge indicator shows if that patient has heart disease or not.0 shows does not have any cardiac disease and 1 shows the person has cardiac disease.
 * The horizontal bar graph shows the primary factors that are responsible for developing a heart disease.
 * The bubble chart shows the different behavioral factors that might contribute towards developing a heart disease.
-* A web application of this dashboard deployed on local server also allows the user to get updated news on Cardiovascular health by web scraping. The code and details of the web-scraping web app may be found in the docs folder of the main branch.
+* A web application of this dashboard deployed on local server also allows the user to get updated news on Cardiovascular health by web scraping. The code and details of the web-scraping web app can be found in the docs folder of the main branch.
 
 ### Dashboad exploring the whole dataset
 
