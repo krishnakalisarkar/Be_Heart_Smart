@@ -14,7 +14,7 @@
 
 [❤ CLICK ME TO GO TO THE TABLEAU DASHBOARD](https://public.tableau.com/app/profile/ayse1055/viz/BeHeartSmart/BeHeartSmartStory?publish=yes).
 
-[❤ CLICK ME TO GO TO THE VIDEO RECORDING OF THE WEB APPLICATION PREDICTING CARDIAC HEALTH STATUS](Cardiovascular_Disease_Prediction_Dashboard/Images_Video_Dashboard/WebApp_Demonstration_Recording.mp4)
+[❤ CLICK ME TO SEE HOW TO USE THE APP TO CHECK YOUR CARDIAC HEALTH STATUS](Cardiovascular_Disease_Prediction_Dashboard/Images_Video_Dashboard/WebApp_Demonstration_Recording.mp4)
 
 
 ## Topic
@@ -224,7 +224,7 @@ Data was loaded from PostgreSQL database Be_Heart_Smart, using sqlAlchemy to cre
 
 ![Age-CardiacDisease-Relationship](Images/Images_EDA_LR/Cardio_Cleaned_Density_Age.png)
 
-* A density plot of weight showerd substantial overlap for positive and negative for cardio_disease with a marginal shift of being positive for cardio_disease towards higher weight.
+* A density plot of weight showed substantial overlap for positive and negative for cardio_disease with a marginal shift of being positive for cardio_disease towards higher weight.
 
 ![Weight-CardiacDisease-Relationship](Images/Images_EDA_LR/Cardio_Cleaned_Density_Weight.png)
 
@@ -321,7 +321,7 @@ Therefore, in this case recall or sensitivity to be maximized, because greater t
 A Linear Regression model was initiated, and cross-validated on the training set using stratified KFold cross-validation, with a k=10 number of folds.\
 The model was evaluated by scoring recall. The recall scores of all 10 folds were very similar around 66%, indicating that the model did not overfit.
 
-![KFold-Crossvalidation_Scores](Images/Images_EDA_LR/K_Fold_CrossValidation_Score.png)
+![KFold-Crossvalidation_Scores](Images/Images_EDA_LR/K_Fold_Cross Validation_Score.png)
 
 #### Feature selection
 
@@ -358,7 +358,7 @@ The AUC_ROC strategy calculated the threshold to be around 0.47.
 ![ROC_AUC](Images/Images_EDA_LR/ROC_AUC.png)
 
 Recall/Precision vs Threshold graph showed that recall drops quickly as threshold increases. Precision increases as threshold increases but the change is not as daramatic as the recall curve.\
-The precision vs recall curve gave a clearer picture of thier relationship. Based on this, a threshold of 0.4 was chosen to optimize recall without greatly compromising accuracy or the harmonic mean.\
+The precision vs recall curve gave a clearer picture of thier relationship. Based on this, a threshold of 0.4 was chosen to optimize recall without greatly compromising accuracy or the harmonic mean.
 
 ![Precision/Recall_vs_Threshold](Images/Images_EDA_LR/ChoosingThreshold_Recall_Precision.png)
 
