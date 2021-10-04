@@ -321,7 +321,7 @@ Therefore, in this case recall or sensitivity to be maximized, because greater t
 A Linear Regression model was initiated, and cross-validated on the training set using stratified KFold cross-validation, with a k=10 number of folds.\
 The model was evaluated by scoring recall. The recall scores of all 10 folds were very similar around 66%, indicating that the model did not overfit.
 
-![KFold-Crossvalidation_Scores](Images/Images_EDA_LR/K_Fold_Cross Validation_Score.png)
+![KFold-Crossvalidation_Scores](Images/Images_EDA_LR/K_Fold_CrossValidation_Score.png)
 
 #### Feature selection
 
